@@ -1,0 +1,58 @@
+# General
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+*.venv
+env/
+*.env
+# pyenv/pyenv-virtualenv
+.python-version
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Node.js (Frontend)
+node_modules/
+dist/
+build/
+
+# IDE/Editor
+.vscode/
+*.code-workspace
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Database and Cache
+*.sqlite3
+qdrant_db/
+qdrant_db_*/
+
+# Chroma (local vector DB)
+chroma.db/
+chroma_db/
+.chromadb/
+.chroma/
+chroma-*
+
+# Miscellaneous
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Local datasets and vector DB dumps (large, machine-specific)
+# Ignore entire Data/ because it contains large local DBs and parquet datasets
+Data/
+
+# Local lockfiles for tools (local-only)
+mcp_servers/websearch/uv.lock
