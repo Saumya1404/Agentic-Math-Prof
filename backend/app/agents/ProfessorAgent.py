@@ -9,7 +9,9 @@ import asyncio
 import json
 from dotenv import load_dotenv
 from pathlib import Path
-from backend.app.agents.hitl import MathFeedbackRefiner
+from backend.app.agents.hitl import get_refiner_module
+from typing import Optional
+from backend.app.core.feedback_qdrant import get_top_k
 
 # --- Load root .env ---
 root_env = Path(__file__).resolve().parents[3] / ".env"
@@ -62,7 +64,8 @@ class ProfessorAgent(BaseAgent):
         """
         super().__init__(model=model, system_prompt=system_prompt)
         self.memory = SummarizedMemory(llm=self.llm, max_messages=10)
-        self.feedback_refiner = MathFeedbackRefiner()  # DSPy HITL module
+        # Use compiled refiner if available, otherwise default Predict-based module
+        self.feedback_refiner = get_refiner_module()
         logger.info("Professor Agent initialized with summarized memory and HITL.")
 
         # --- Tools ---
@@ -284,7 +287,7 @@ class ProfessorAgent(BaseAgent):
         # If there is a running loop, the caller should use the async API instead of this sync wrapper.
         raise RuntimeError("call_mcp_tool() called while an event loop is running; use await _call_mcp_tool_async(...) instead")
  
-    async def call_llm(self, user_input: str, guardrail_result: dict, previous_solution: str = None, feedback: str = None) -> tuple[str, list]:
+    async def call_llm(self, user_input: str, guardrail_result: dict, previous_solution: str = None, feedback: str = None, memory: Optional[SummarizedMemory] = None) -> tuple[str, list]:
         """Async: process math query with optional refinement. Await this from async callers."""
         if guardrail_result.get("status") != "allowed":
             logger.warning(f"Query blocked by guardrail: {user_input}")
@@ -293,8 +296,11 @@ class ProfessorAgent(BaseAgent):
         # Track which tools are used
         tool_used = []
 
+        # Use provided per-call memory if supplied, otherwise fallback to agent memory
+        mem = memory if memory is not None else self.memory
+
         # Build context from memory
-        history_entries = self.memory.get_tuple_messages_without_summary()[-5:]
+        history_entries = mem.get_tuple_messages_without_summary()[-5:]
         history = "\n".join([f"Q: {role}\nA: {content}" for role, content in history_entries])
         tool_names = ", ".join(self.tools.keys())
 
@@ -308,92 +314,201 @@ class ProfessorAgent(BaseAgent):
                     tool_used.append(kb_tool)
                     logger.info(f"Retrieved relevant info from {kb_tool}")
 
-            # Step 2: Web search fallback
+            # Step 2: Web search fallback (Extract-first pipeline with analyze_content; minimal crawl)
             web_result = ""
             # Check if we need current/real-time information that KB might not have
+            ui = user_input.lower()
+            finance_trigger = (
+                ("price" in ui and any(k in ui for k in ["stock", "share", "ticker", "quote", "aapl", "apple"]))
+                or ("market price" in ui)
+                or ("stock price" in ui)
+            )
             needs_web_search = (
                 not kb_response or 
                 "No relevant info" in kb_response or
-                any(keyword in user_input.lower() for keyword in [
+                any(keyword in ui for keyword in [
                     "current", "latest", "recent", "today", "now", "find", "search", "look up",
-                    "online", "web", "internet", "market price", "stock price", "real-time"
+                    "online", "web", "internet", "real-time"
                 ])
+                or finance_trigger
             )
-            
+
             if needs_web_search:
                 # Check if MCP tools need initialization
                 if hasattr(self, '_mcp_needs_init') and self._mcp_needs_init:
                     logger.warning("MCP tools not initialized yet, skipping web search")
                     kb_response += "\nWeb search: MCP tools not available (initialization pending)"
+                elif not self.mcp_tools:
+                    logger.warning("MCP tools dictionary empty; web search not available")
+                    kb_response += "\nWeb search: Not available"
                 else:
-                    web_search_tool = None
-                    # Look for any available web search tools
-                    for tool_name in self.mcp_tools.keys():
-                        if any(web_tool in tool_name.lower() for web_tool in ['search', 'extract', 'crawl', 'scrape']):
-                            web_search_tool = tool_name
-                            break
-                    
-                    if web_search_tool:
-                        logger.info(f"Using MCP tool: {web_search_tool}")
-                        
-                        # Multi-stage web search strategy: Search → Crawl
-                        logger.info(f"Using multi-stage search strategy for math query")
-                        
-                        # Stage 1: Search for relevant websites
-                        search_query = user_input
-                        search_args = {"query": search_query}
-                        search_result = await self._call_mcp_tool_async('search', search_args)
-                        logger.info(f"Search result length: {len(search_result) if search_result else 0}")
-                        
-                        # Extract URLs from search results for crawling
-                        urls_to_crawl = []
+                    # Discover tool names by role
+                    tool_names_lower = {name.lower(): name for name in self.mcp_tools.keys()}
+                    def find_tool(candidates):
+                        for lname, orig in tool_names_lower.items():
+                            if any(c in lname for c in candidates):
+                                return orig
+                        return None
+
+                    search_tool_name = find_tool(["search"]) or "search"
+                    extract_tool_name = find_tool(["extract"]) or None
+                    analyze_tool_name = find_tool(["analyze_content", "analyse", "analyze"]) or None
+                    crawl_tool_name = find_tool(["crawl"]) or None
+                    extracts = []
+                    extract_prompt = (
+                        "Extract content relevant to: '" + user_input + "'. Return: \n"
+                        "- equations (LaTeX or plain) with variable definitions\n"
+                        "- key steps or algorithm outline (bullet list)\n"
+                        "- constraints/assumptions\n"
+                        "- final forms or canonical results (if any)\n"
+                        "- cite the page source\n"
+                        "Keep it under 900 characters. Do not include unrelated prose. Do not invent content."
+                    )
+
+                    # Stage A: Extract-only-first using provider-side web search
+                    if extract_tool_name:
+                        try:
+                            extract_args_first = {
+                                "url": [],  # rely on provider-side web search
+                                "prompt": extract_prompt,
+                                "enableWebSearch": True,
+                                "showSources": True,
+                            }
+                            extract_only_result = await self._call_mcp_tool_async(extract_tool_name, extract_args_first)
+                            # Track extract tool and search (since enableWebSearch=True uses web search internally)
+                            if "extract" not in tool_used:
+                                tool_used.append("extract")
+                            if "search" not in tool_used:
+                                tool_used.append("search")
+                            if extract_only_result and "Error" not in extract_only_result:
+                                extracts.append(extract_only_result)
+                            logger.info(f"Extract-only-first length: {len(extract_only_result) if extract_only_result else 0}")
+                        except Exception as e:
+                            logger.warning(f"Extract-only-first failed: {e}")
+                            # Still track that we attempted to use extract and search tools
+                            if "extract" not in tool_used:
+                                tool_used.append("extract")
+                            if "search" not in tool_used:
+                                tool_used.append("search")
+
+                    # Decide if we need to escalate (thin or missing extracts)
+                    need_escalate = (not extracts or len("\n".join(extracts)) < 400)
+
+                    urls = []
+                    search_result = ""
+                    if need_escalate and search_tool_name:
+                        # Stage B1: Search to get candidate URLs
+                        try:
+                            # Check if search_tool_name actually exists in mcp_tools
+                            if search_tool_name in self.mcp_tools:
+                                search_args = {"query": user_input}
+                                search_result = await self._call_mcp_tool_async(search_tool_name, search_args)
+                                # Track search tool usage
+                                if "search" not in tool_used:
+                                    tool_used.append("search")
+                                logger.info(f"Search ({search_tool_name}) result length: {len(search_result) if search_result else 0}")
+                            else:
+                                logger.warning(f"Search tool '{search_tool_name}' not found in mcp_tools")
+                                search_result = ""
+                        except Exception as e:
+                            logger.warning(f"Search stage failed: {e}")
+                            # Still track that we attempted to use search tool
+                            if "search" not in tool_used:
+                                tool_used.append("search")
+                            search_result = ""
+
+                        # Parse and select URLs (deduplicate, prefer edu/org/known math domains)
                         if search_result and "Error" not in search_result:
-                            # Look for URLs in the search results
                             lines = search_result.split('\n')
                             for line in lines:
                                 if 'URL:' in line:
-                                    url = line.replace('URL:', '').strip()
-                                    # Accept any URL from search results
-                                    urls_to_crawl.append(url)
-                        
-                        # Stage 2: Crawl the found URLs
-                        if urls_to_crawl:
-                            logger.info(f"Found {len(urls_to_crawl)} URLs to crawl")
-                            crawl_results = []
-                            for url in urls_to_crawl[:3]:  # Limit to top 3 URLs
-                                try:
-                                    crawl_args = {
-                                        "url": url,
-                                        "maxDepth": 1,
-                                        "limit": 1
-                                    }
-                                    crawl_result = await self._call_mcp_tool_async('crawl', crawl_args)
-                                    if crawl_result and "Error" not in crawl_result:
-                                        crawl_results.append(f"URL: {url}\nContent: {crawl_result}")
-                                except Exception as e:
-                                    logger.warning(f"Failed to crawl {url}: {e}")
-                            
-                            # Combine search and crawl results
-                            web_result = f"Search Results:\n{search_result}\n\nCrawled Websites:\n" + "\n\n".join(crawl_results)
-                        else:
-                            # Fallback: use regular search if no URLs found
-                            logger.info("No URLs found in search, using search results only")
-                            web_result = search_result
-                        
-                        # Mark both search and crawl as used
-                        tool_used.extend(['search', 'crawl'])
-                        
-                        logger.info(f"Web search result length: {len(web_result) if web_result else 0}")
-                        logger.info(f"Web search result preview: {web_result[:200] if web_result else 'None'}...")
-                        if "Error" not in web_result:
-                            tool_used.append(web_search_tool)
-                            logger.info(f"Added {web_search_tool} to tools used")
-                        else:
-                            logger.warning(f"Web search error: {web_result}")
+                                    url = line.split('URL:')[-1].strip()
+                                    if url and url not in urls:
+                                        urls.append(url)
+
+                        def score_url(u: str) -> int:
+                            prefs = [".edu", ".org", "khanacademy.org", "wolfram.com", "mit.edu", "math.stackexchange.com", "britannica", "arxiv.org"]
+                            score = 0
+                            for p in prefs:
+                                if p in u:
+                                    score += 2
+                            return score
+
+                        urls = sorted(urls, key=score_url, reverse=True)[:5]
+
+                        # Stage B2: Targeted extraction on URLs
+                        if extract_tool_name and urls:
+                            try:
+                                extract_args = {
+                                    "url": urls[:4],
+                                    "prompt": extract_prompt,
+                                    "enableWebSearch": False,
+                                    "showSources": True,
+                                }
+                                extract_result = await self._call_mcp_tool_async(extract_tool_name, extract_args)
+                                # Track extract tool usage (avoid duplicates)
+                                if "extract" not in tool_used:
+                                    tool_used.append("extract")
+                                if extract_result and "Error" not in extract_result:
+                                    extracts.append(extract_result)
+                            except Exception as e:
+                                logger.warning(f"Extract stage (escalated) failed: {e}")
+                                # Still track that we attempted to use extract tool
+                                if "extract" not in tool_used:
+                                    tool_used.append("extract")
+
+                        # Stage B3: Narrow micro-crawl if still thin
+                        crawled_snippets = []
+                        if (not extracts or len("\n".join(extracts)) < 400) and crawl_tool_name and urls:
+                            try:
+                                crawl_args = {"url": urls[0], "maxDepth": 1, "limit": 1}
+                                crawl_result = await self._call_mcp_tool_async(crawl_tool_name, crawl_args)
+                                if crawl_result and "Error" not in crawl_result:
+                                    crawled_snippets.append(str(crawl_result)[:1200])
+                                # Track crawl tool usage (even if result is empty, tool was called)
+                                if "crawl" not in tool_used:
+                                    tool_used.append("crawl")
+                            except Exception as e:
+                                logger.warning(f"Crawl stage (escalated) failed: {e}")
+                                # Still track that we attempted to use crawl tool
+                                if "crawl" not in tool_used:
+                                    tool_used.append("crawl")
+                    else:
+                        crawled_snippets = []
+
+                    # Stage 4: Analyze and compress into Grounded Notes
+                    content_for_analysis = ("\n\n".join(extracts) + ("\n\n" + "\n\n".join(crawled_snippets) if crawled_snippets else "")).strip()
+                    grounded_notes = ""
+                    if analyze_tool_name and content_for_analysis:
+                        try:
+                            analysis_prompt = (
+                                "Given excerpts about '" + user_input + "', create Grounded Notes (≤ 1500 chars):\n"
+                                "Sections: Equations, Steps (numbered 4–8 items), Key Points (3–5 bullets), Definitions, Sources (≤3 URLs).\n"
+                                "No invented facts. Prefer consistent notation. If conflicts, note briefly."
+                            )
+                            analysis_args = {"content": content_for_analysis, "prompt": analysis_prompt}
+                            grounded_notes = await self._call_mcp_tool_async(analyze_tool_name, analysis_args)
+                            # Track analyze_content tool usage
+                            if "analyze_content" not in tool_used:
+                                tool_used.append("analyze_content")
+                        except Exception as e:
+                            logger.warning(f"Analyze stage failed: {e}")
+                            # Still track that we attempted to use analyze_content tool
+                            if "analyze_content" not in tool_used:
+                                tool_used.append("analyze_content")
+
+                    # Build web_result and incorporate into kb_response
+                    if grounded_notes:
+                        web_result = f"Grounded Notes:\n{grounded_notes}"
+                    elif extracts:
+                        web_result = "\n\n".join(extracts)[:2000]
+                    else:
+                        web_result = search_result or ""
+
+                    if web_result:
                         kb_response += f"\nWeb search result: {web_result}"
                     else:
-                        logger.warning("No web search MCP tool found")
-                        kb_response += "\nWeb search: Not available"
+                        kb_response += "\nWeb search: No usable results"
 
             # Step 3: Generate or refine response
             context = f"History: {history}\nTool Results: {kb_response}"
@@ -403,6 +518,18 @@ class ProfessorAgent(BaseAgent):
                 # Assume feedback is formatted as "Critic Feedback: ... \nHuman Feedback: ..."
                 critic_feedback = feedback.split("Human Feedback:")[0].replace("Critic Feedback:", "").strip() if "Critic Feedback:" in feedback else ""
                 human_feedback = feedback.split("Human Feedback:")[1].strip() if "Human Feedback:" in feedback else feedback
+                # Augment context with top-k similar past human feedback examples (vector search)
+                try:
+                    similar = get_top_k(human_feedback or user_input, k=3)
+                    if similar:
+                        sims_txt = "\n\nSimilar feedback examples (top 3):\n"
+                        for s in similar:
+                            md = s.get("metadata") or {}
+                            sims_txt += f"- Human Feedback: {md.get('human_feedback','')[:200]} | Initial: {md.get('initial_response','')[:200]}\n"
+                        context = context + sims_txt
+                except Exception:
+                    logger.exception("Failed to fetch similar feedback examples for augmentation")
+
                 refined = self.feedback_refiner(
                     initial_response=previous_solution,
                     human_feedback=human_feedback,
@@ -422,18 +549,25 @@ class ProfessorAgent(BaseAgent):
                 if "Information not available" not in response:
                     tool_used.append("LLM")  # LLM used for final response composition
 
-            # Step 4: No info fallback
-            if ("No relevant info" in kb_response and
-                ("Web search: Not available" in kb_response or not web_result)):
+            # Step 4: No info fallback - only override if NO tools were actually used
+            # Check if any tools provided useful information
+            web_tools_used = any(tool in tool_used for tool in ["search", "extract", "crawl", "analyze_content"])
+            kb_tools_used = any(tool in tool_used for tool in ["GSM8K_Retriever", "Orca200k_Retriever"])
+            
+            if (not kb_tools_used and not web_tools_used and 
+                ("No relevant info" in kb_response and 
+                 ("Web search: Not available" in kb_response or not web_result))):
                 response = "Information not available in the knowledge bases or reliable online sources. I cannot provide an accurate solution without verified data."
-                tool_used = ["None"]  # Override to indicate no tools provided data
+                # Only set to None if truly no tools were used or provided data
+                if not tool_used:
+                    tool_used = ["None"]
 
             # Log tools used
             logger.info(f"Tools used for query '{user_input}': {', '.join(tool_used) or 'None'}")
 
-            # Update memory
-            self.memory.add_message("user", user_input)
-            self.memory.add_message("assistant", response)
+            # Update per-call memory (or agent memory if per-call not provided)
+            mem.add_message("user", user_input)
+            mem.add_message("assistant", response)
             logger.info(f"Professor Agent processed query: {user_input}")
             return response, tool_used
 

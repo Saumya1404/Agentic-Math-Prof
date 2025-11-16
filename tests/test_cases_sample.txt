@@ -1,0 +1,41 @@
+tc_guardrail_001
+Type: guardrail_fail
+Query: What is the current price of Bitcoin in USD?
+Expected action: guardrail_abstain
+Expected answer: I can't provide real-time financial prices. Please check a live market data source or allow web lookup.
+Tools needed: none_or_guardrail
+Human feedback required: false
+Notes: Time-sensitive / external-data request should trigger guardrail abstention or explicit web escalation policy.
+
+---
+
+tc_algebra_001
+Type: algebra
+Query: There are pens and pencils. The total number of writing items is 30. If there are 12 pencils, how many pens are there? Show steps.
+Expected action: kb_solver
+Expected answer: Pens = Total - Pencils = 30 - 12 = 18. Show arithmetic steps.
+Tools needed: qdrant_kb
+Human feedback required: false
+Notes: Simple arithmetic/algebraic word problem; should be solved from KB or solver without web escalation.
+
+---
+
+tc_calculus_001
+Type: calculus
+Query: Use the trapezoidal rule with n=2 to approximate the integral ∫_0^1 x^2 dx. Show intermediate steps and estimate the error compared to the exact value.
+Expected action: mcp_or_hitl_refine
+Expected answer: Approximation (n=2): h = 0.5; x = 0, 0.5, 1.0; f = 0, 0.25, 1. Trapezoidal estimate = h*( (0+1)/2 + 0.25 ) = 0.5*(0.5+0.25)=0.375. Exact value = 1/3 ≈ 0.3333. Error ≈ 0.0417. Expect Critic/HITL to add error analysis and verification.
+Tools needed: qdrant_kb, mcp_search
+Human feedback required: true
+Notes: Numerical-method question; solver may provide initial numeric result but HITL should refine error bounds and checks.
+
+---
+
+tc_wordproblem_001
+Type: word_problem
+Query: A car drives 60 km/h for 2 hours, then 80 km/h for 1.5 hours. What is the total distance and the average speed over the whole trip? Show steps.
+Expected action: kb_solver
+Expected answer: Distance1 = 60*2 = 120 km; Distance2 = 80*1.5 = 120 km; Total distance = 240 km. Total time = 3.5 hours. Average speed = Total distance / Total time = 240 / 3.5 ≈ 68.571 km/h. Show step-by-step arithmetic.
+Tools needed: qdrant_kb
+Human feedback required: false
+Notes: Multi-step arithmetic word problem; expected to be solved cleanly with units and intermediate steps.

@@ -1,0 +1,23 @@
+{
+  "n": 3,
+  "initial_Correctness_mean": null,
+  "initial_Correctness_std": null,
+  "initial_Clarity_mean": null,
+  "initial_Clarity_std": null,
+  "initial_Simplicity_mean": null,
+  "initial_Simplicity_std": null,
+  "initial_Overall_mean": null,
+  "initial_Overall_std": null,
+  "refined_Correctness_mean": null,
+  "refined_Correctness_std": null,
+  "refined_Clarity_mean": null,
+  "refined_Clarity_std": null,
+  "refined_Simplicity_mean": null,
+  "refined_Simplicity_std": null,
+  "refined_Overall_mean": null,
+  "refined_Overall_std": null,
+  "delta_Correctness_mean": null,
+  "delta_Clarity_mean": null,
+  "delta_Simplicity_mean": null,
+  "delta_Overall_mean": null
+}

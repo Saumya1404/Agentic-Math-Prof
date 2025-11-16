@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+dspy-ai
+langchain
+langchain-groq
+langchain-qdrant
+langchain-huggingface
+langchain-mcp-adapters
+langgraph
+qdrant-client
+sympy
+pyyaml
+sentence-transformers

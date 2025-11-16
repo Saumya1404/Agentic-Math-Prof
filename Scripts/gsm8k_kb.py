@@ -27,7 +27,7 @@ print(f"🔧 Using device: {device}")
 
 embeddings = []
 
-print("⚙️ Generating embeddings in batches...")
+print("Generating embeddings in batches...")
 with torch.no_grad():
     for i in range(0, len(texts), BATCH_SIZE):
         batch = texts[i:i + BATCH_SIZE]
@@ -40,7 +40,7 @@ with torch.no_grad():
         embeddings.extend(batch_emb)
         print(f"Embedded {i + len(batch)} / {len(texts)}")
 
-print("✅ Embeddings generated successfully.")
+print("Embeddings generated successfully.")
 
 # ===== QDRANT SETUP =====
 client = QdrantClient(path=QDRANT_PATH, prefer_grpc=True)
@@ -52,7 +52,7 @@ client.recreate_collection(
 
 # ===== INSERT INTO QDRANT =====
 UPSERT_BATCH = 500
-print("📥 Inserting vectors into Qdrant...")
+print("Inserting vectors into Qdrant...")
 
 for i in range(0, len(embeddings), UPSERT_BATCH):
     batch_emb = embeddings[i:i + UPSERT_BATCH]
@@ -68,4 +68,4 @@ for i in range(0, len(embeddings), UPSERT_BATCH):
     )
     print(f"Inserted {i + len(batch_emb)} / {len(embeddings)}")
 
-print(f"✅ Persistent Qdrant DB '{COLLECTION_NAME}' created successfully at {QDRANT_PATH}")
+print(f"Persistent Qdrant DB '{COLLECTION_NAME}' created successfully at {QDRANT_PATH}")

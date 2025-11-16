@@ -1,0 +1,62 @@
+[
+  {
+    "entry_id": 0,
+    "uuid": "790253e0-8f58-47bc-92b9-ac728a08533a",
+    "subject": "algebra",
+    "query_preview": "Subtract the rational expression, then simplify:\n\n$$\n\\frac{ 12 }{ 2 \\cdot q }-\\frac{ 6 }{ 3 \\cdot p ...",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 2,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 1.4
+    }
+  },
+  {
+    "entry_id": 1,
+    "uuid": "1af0e1dd-7848-4c91-a8bd-ef00777094a3",
+    "subject": "algebra",
+    "query_preview": "An epidemiological study of the spread of a certain influenza strain that hit a small school populat...",
+    "summary_metrics": {
+      "initial_quality": 9,
+      "refined_quality": 9,
+      "improvement_score": 2,
+      "human_feedback_importance": 6,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.0,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 2,
+    "uuid": "c251e922-18a0-40d3-a506-3a4d6f32a485",
+    "subject": "algebra",
+    "query_preview": "Write an expression for a rational function with the given characteristics:\n\n1. vertical asymptotes ...",
+    "summary_metrics": {
+      "initial_quality": 9,
+      "refined_quality": 10,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 3,
+    "uuid": "83a37faf-1b91-4237-bf28-3ddc2db64ef4",
+    "subject": "algebra",
+    "query_preview": "A biologist observes that a certain bacterial colony triples every 4 hours and after 12 hours occupi...",
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 8,
+      "improvement_score": 2,
+      "human_feedback_importance": 6,
+      "overall_improvement": 0,
+      "refinement_success_score": 3.6,
+      "human_feedback_impact": 0.0
+    }
+  }
+]

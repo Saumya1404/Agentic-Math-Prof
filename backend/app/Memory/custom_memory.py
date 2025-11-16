@@ -97,20 +97,23 @@ class SummarizedMemory(ConversationMemory):
             )
             self.messages = [summary_msg] + recent_messages
 
-    def _generate_summary(self):
-        if not self.llm or not self.messages:
+    def _generate_summary(self, messages=None):
+        """Generate a concise summary for the provided messages (or the full memory if None)."""
+        if not self.llm:
             return ""
-        
+        msgs = messages if messages is not None else self.messages
+        if not msgs:
+            return ""
         conversation_text = "\n".join([
-            f"{msg.role}: {msg.content}" for msg in self.messages
+            f"{msg.role}: {msg.content}" for msg in msgs
         ])
-        
+
         prompt = f"""Summarize the following conversation concisely, focusing on key mathematical concepts, problems discussed, and solutions provided:
 
                 {conversation_text}
 
                 Summary:"""
-        
+
         try:
             response = self.llm.invoke([("user", prompt)])
             return response.content
