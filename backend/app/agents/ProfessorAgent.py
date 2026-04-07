@@ -3,6 +3,7 @@ from backend.app.core.logger import logger
 from langchain_mcp_adapters.client import MultiServerMCPClient
 import os
 from sympy import sympify, solve
+from backend.app.tools.MathSolverTool import MathSolverTool
 from backend.app.Memory.custom_memory import SummarizedMemory
 from backend.app.tools.RetrieverTool import QdrantRetrieverTool
 import asyncio
@@ -69,6 +70,9 @@ class ProfessorAgent(BaseAgent):
         logger.info("Professor Agent initialized with summarized memory and HITL.")
 
         # --- Tools ---
+        # instantiate math solver tool (safe defaults)
+        self.math_solver_tool = MathSolverTool(safe_mode=True)
+
         self.tools = {
             "GSM8K_Retriever": QdrantRetrieverTool(
                 name="GSM8K_Retriever",
@@ -82,7 +86,8 @@ class ProfessorAgent(BaseAgent):
                 collection_name="orca_200k_sample",
                 persist_dir="./Data/knowledge_base/qdrant_db_orca_sample"
             ),
-            "math_solver": self.math_solver,
+            # register a backward-compatible proxy that returns JSON-stringified results
+            "math_solver": self._math_solver_tool_proxy,
         }
 
         # --- MCP Servers ---
@@ -222,16 +227,34 @@ class ProfessorAgent(BaseAgent):
             logger.error(f"Failed to initialize MCP tools asynchronously: {e}")
             logger.exception(e)
 
-    def math_solver(self, equation: str) -> str:
-        """Solve mathematical equations using SymPy"""
+    def math_solver(self, equation: str) -> dict:
+        """Structured math solver wrapper that returns a dict result.
+
+        This delegates to `self.math_solver_tool.solve(...)` and returns
+        whatever structured payload the tool provides (type/variables/result).
+        """
         try:
-            expr = sympify(equation)
-            solution = solve(expr)
+            result = self.math_solver_tool.solve(equation)
             logger.info(f"Used tool 'math_solver' for equation: {equation}")
-            return str(solution)
+            return result
         except Exception as e:
             logger.error(f"Error in math_solver: {e}")
-            return f"Error: {str(e)}"
+            return {"type": "error", "message": str(e)}
+
+    def _math_solver_tool_proxy(self, equation: str) -> str:
+        """Backward-compatible proxy registered in `self.tools`.
+
+        The tools registry historically returned a string. To remain compatible
+        with any callers that expect a string, this proxy JSON-serializes the
+        structured result. Internal code can call `math_solver()` to get a
+        dict directly.
+        """
+        try:
+            res = self.math_solver(equation)
+            return json.dumps(res, ensure_ascii=False)
+        except Exception as e:
+            logger.error(f"Error in math_solver proxy: {e}")
+            return json.dumps({"type": "error", "message": str(e)})
 
     async def _call_mcp_tool_async(self, tool_name: str, arguments: dict) -> str:
         """Call MCP tool asynchronously and coerce structured outputs to plain text."""
