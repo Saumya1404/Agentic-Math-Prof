@@ -147,4 +147,3 @@ python -m backend.tests.guardrailAgent_tests
 This project inherits its license from the repository (see the LICENSE file on the remote).
 
 ---
-If you want me to tailor the README with exact dependency pins or add badges/diagrams, I can update this file and wire up a simple CI workflow next.
