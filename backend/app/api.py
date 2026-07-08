@@ -8,6 +8,7 @@ from backend.app.orchestration import run as run_orchestration
 from backend.app.agents.hitl import feedback_examples
 import logging
 from backend.app.state import tasks, hitl_events
+from backend.app.core.registry import init_professor_once,close_professor,get_professor
 
 logger = logging.getLogger(__name__)
 app = FastAPI(title="Math Professor API", version="1.0.0")
@@ -99,6 +100,14 @@ async def get_status(task_id: str):
             answer=task.get("professor_response"),
             critic_feedback=task.get("critic_feedback"),
         )
+    elif status == "processing":
+        # Return current answer during refinement so frontend can show updated response
+        return SolveResponse(
+            task_id=task_id,
+            status="processing",
+            answer=task.get("answer") or task.get("professor_response"),
+            iterations=task.get("iterations"),
+        )
     elif status == "error":
         return SolveResponse(
             task_id=task_id,
@@ -117,3 +126,13 @@ async def submit_feedback(request: FeedbackRequest):
     task["human_feedback"] = request.feedback
     hitl_events[request.task_id].set()  
     return {"status": "feedback_received"}
+
+@app.on_event("startup")
+async def startup_event():
+    await init_professor_once()
+    
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await close_professor()
+    

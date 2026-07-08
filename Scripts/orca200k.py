@@ -78,7 +78,7 @@ def main():
     )
 
     # ===== INSERT INTO QDRANT =====
-    print("📥 Inserting embeddings into Qdrant in batches...")
+    print("Inserting embeddings into Qdrant in batches...")
     for i in range(0, len(embeddings), UPSERT_BATCH):
         batch_emb = embeddings[i:i + UPSERT_BATCH]
         batch_text = texts[i:i + UPSERT_BATCH]

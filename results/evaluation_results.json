@@ -1,0 +1,1982 @@
+[
+  {
+    "entry_id": 0,
+    "uuid": "790253e0-8f58-47bc-92b9-ac728a08533a",
+    "subject": "algebra",
+    "query_preview": "Subtract the rational expression, then simplify:\n\n$$\n\\frac{ 12 }{ 2 \\cdot q }-\\frac{ 6 }{ 3 \\cdot p ...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 8,
+        "overall_quality": 7,
+        "strengths": [
+          "Provides a detailed step-by-step solution",
+          "Covers all aspects of the problem",
+          "Explains the process of finding a common denominator"
+        ],
+        "weaknesses": [
+          "The initial simplification of fractions could be improved",
+          "The explanation is somewhat lengthy and could be more concise"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "Simplifies the fractions before finding a common denominator",
+          "Provides a clear and concise step-by-step solution",
+          "Improves the overall clarity and simplicity of the explanation"
+        ],
+        "weaknesses": [
+          "Could further emphasize the importance of simplifying fractions before proceeding"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Simplification of fractions before finding a common denominator",
+          "Improved clarity and conciseness of the explanation"
+        ],
+        "remaining_issues": [
+          "Minor opportunity to further emphasize key concepts"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 9,
+        "pedagogical_value": 8,
+        "error_reduction": 8,
+        "conceptual_clarity": 9
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 2,
+      "overall_improvement": 2,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 28.57142857142857,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 7.666666666666667,
+      "refined_quality_index": 9.0,
+      "human_feedback_impact": 1.4
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 2,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 1.4
+    }
+  },
+  {
+    "entry_id": 1,
+    "uuid": "1af0e1dd-7848-4c91-a8bd-ef00777094a3",
+    "subject": "algebra",
+    "query_preview": "An epidemiological study of the spread of a certain influenza strain that hit a small school populat...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "Correctly applies the quadratic formula",
+          "Provides clear step-by-step explanation",
+          "Addresses the restriction on t"
+        ],
+        "weaknesses": [
+          "Could simplify the initial equation more efficiently",
+          "Does not provide additional context or explanations for the quadratic formula"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "Maintains the correctness and clarity of the initial response",
+          "Provides the same level of step-by-step explanation",
+          "Still addresses the restriction on t"
+        ],
+        "weaknesses": [
+          "Does not refine or simplify the explanation further",
+          "Lacks additional insights or explanations beyond the initial response"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 2,
+        "refinement_effectiveness": 4,
+        "human_feedback_importance": 6,
+        "key_improvements": [
+          "None, as the refined response is nearly identical to the initial response"
+        ],
+        "remaining_issues": [
+          "Lack of further simplification or refinement in the explanation",
+          "No additional context or explanations provided"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 0,
+      "overall_improvement": 0,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 0.0,
+      "refinement_success_score": 4.0,
+      "initial_quality_index": 9.0,
+      "refined_quality_index": 9.0,
+      "human_feedback_impact": 0.0
+    },
+    "summary_metrics": {
+      "initial_quality": 9,
+      "refined_quality": 9,
+      "improvement_score": 2,
+      "human_feedback_importance": 6,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.0,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 2,
+    "uuid": "c251e922-18a0-40d3-a506-3a4d6f32a485",
+    "subject": "algebra",
+    "query_preview": "Write an expression for a rational function with the given characteristics:\n\n1. vertical asymptotes ...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Accurate mathematical calculations",
+          "Good use of mathematical principles to derive the rational function"
+        ],
+        "weaknesses": [
+          "Minor simplification oversight in the final expression"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 10,
+        "simplicity_score": 9,
+        "clarity_score": 10,
+        "completeness_score": 10,
+        "step_by_step_quality": 10,
+        "overall_quality": 10,
+        "strengths": [
+          "Clear and detailed step-by-step explanation",
+          "Accurate mathematical calculations",
+          "Effective use of mathematical principles",
+          "Improved clarity in adjusting for the y-intercept"
+        ],
+        "weaknesses": [
+          "None notable"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Clarified the adjustment for the y-intercept",
+          "Minor simplifications and rephrasing for clarity"
+        ],
+        "remaining_issues": [
+          "None significant"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 10,
+        "explanation_quality": 10,
+        "pedagogical_value": 9,
+        "error_reduction": 10,
+        "conceptual_clarity": 10
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 11.11111111111111,
+      "overall_improvement_percent": 11.11111111111111,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 9.0,
+      "refined_quality_index": 10.0,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 9,
+      "refined_quality": 10,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 3,
+    "uuid": "83a37faf-1b91-4237-bf28-3ddc2db64ef4",
+    "subject": "algebra",
+    "query_preview": "A biologist observes that a certain bacterial colony triples every 4 hours and after 12 hours occupi...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Accurate mathematical calculations",
+          "Covers all aspects of the problem"
+        ],
+        "weaknesses": [
+          "Explanation could be more concise",
+          "Some steps could be further simplified"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Accurate mathematical calculations",
+          "Covers all aspects of the problem"
+        ],
+        "weaknesses": [
+          "Refined response is nearly identical to the initial response",
+          "Lacks significant improvements or simplifications"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 2,
+        "refinement_effectiveness": 3,
+        "human_feedback_importance": 6,
+        "key_improvements": [
+          "None significant"
+        ],
+        "remaining_issues": [
+          "Lack of simplification",
+          "No significant improvements in clarity or explanation"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 0,
+      "overall_improvement": 0,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 0.0,
+      "refinement_success_score": 3.6,
+      "initial_quality_index": 8.666666666666666,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.0
+    },
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 8,
+      "improvement_score": 2,
+      "human_feedback_importance": 6,
+      "overall_improvement": 0,
+      "refinement_success_score": 3.6,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 4,
+    "uuid": "7efd2ae1-d387-447f-ad12-4b0dc2ab7a22",
+    "subject": "differential_calc",
+    "query_preview": "Sketch the curve:  \n\n$y = 3 \\cdot x^2 - x^4 - 2$.\n\nSubmit as your final answer:\n\n1. The domain (in i...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 6,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "The response provides a clear and step-by-step solution to the problem.",
+          "It correctly identifies the domain, vertical asymptotes, horizontal asymptotes, and slant asymptotes.",
+          "The explanation of intervals of increase and decrease, as well as concavity, is thorough."
+        ],
+        "weaknesses": [
+          "The response could be more concise and directly address the query without unnecessary elaboration.",
+          "Some steps, although correct, are overly verbose and could be simplified for better clarity."
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "The refined response maintains the correctness and completeness of the initial response.",
+          "It improves in terms of simplicity and clarity, making the explanation more accessible.",
+          "The step-by-step quality is enhanced, providing a smoother learning experience."
+        ],
+        "weaknesses": [
+          "There is still room for minor simplifications in some of the explanatory steps.",
+          "A few sentences could be rephrased for even greater clarity, although they are generally well-explained."
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Enhanced clarity and simplicity in explanations.",
+          "Improved step-by-step guidance for better understanding."
+        ],
+        "remaining_issues": [
+          "Minor opportunities for further simplification and clarity enhancement.",
+          "Some explanations, while clear, could be more concise."
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 9,
+        "pedagogical_value": 9,
+        "error_reduction": 9,
+        "conceptual_clarity": 9
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 12.5,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 8.666666666666666,
+      "refined_quality_index": 9.0,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 5,
+    "uuid": "272ed29b-1de2-48d4-a63d-c8c7173b76ef",
+    "subject": "differential_calc",
+    "query_preview": "Compute the derivative of the function $f(x) = \\sqrt[x]{3} + \\frac{ 1 }{ 6^{5 \\cdot x} } + 4^{\\sqrt{...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Detailed step-by-step solution",
+          "Correct application of differentiation rules",
+          "Clear explanation of the process"
+        ],
+        "weaknesses": [
+          "Lengthy and complex calculations",
+          "Some steps could be simplified or combined",
+          "Minor calculation errors"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "Improved clarity and simplicity",
+          "Correct and detailed calculations",
+          "Effective use of mathematical notation"
+        ],
+        "weaknesses": [
+          "Some minor calculation steps could still be simplified",
+          "Could benefit from additional explanatory comments"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Simplified calculations",
+          "Improved explanation of key concepts",
+          "Enhanced clarity and readability"
+        ],
+        "remaining_issues": [
+          "Minor opportunities for further simplification",
+          "Potential for additional explanatory comments"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 12.5,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 8.0,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 6,
+    "uuid": "c80d8185-edc4-4a44-9e58-dcab9d666178",
+    "subject": "differential_calc",
+    "query_preview": "Find any local extrema for $s = \\left| \\arctan\\left(4 \\cdot x^2 - 12 \\cdot x + 8\\right) \\right|$.\n\nS...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 7,
+        "overall_quality": 7,
+        "strengths": [
+          "Correctly identifies the function and the task",
+          "Properly differentiates the function",
+          "Considers the absolute value and its implications"
+        ],
+        "weaknesses": [
+          "Lacks a clear conclusion on the nature of the extrema",
+          "Does not fully address the impact of the absolute value on the local maxima/minima",
+          "Could improve in explaining the mathematical reasoning behind certain steps"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Provides a clearer analysis of the function and its components",
+          "Correctly identifies and classifies local extrema",
+          "Improves upon the initial response with more detailed explanations"
+        ],
+        "weaknesses": [
+          "Still somewhat complex for novice learners",
+          "Could further enhance the explanation of the derivative's role",
+          "Minor opportunities for simplifying certain mathematical expressions"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Clearer identification and explanation of local extrema",
+          "Enhanced analysis of the function's behavior",
+          "Improved step-by-step explanation"
+        ],
+        "remaining_issues": [
+          "Some explanations remain somewhat complex",
+          "Minor areas for further simplification of mathematical concepts"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 14.285714285714285,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 7.666666666666667,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.8
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 7,
+    "uuid": "8b909199-f22e-4b2b-90ae-f1b0e119b9d9",
+    "subject": "differential_calc",
+    "query_preview": "Sketch the curve:  \n$y = 2 \\cdot x \\cdot \\sqrt{3-x^2}$.\n\nSubmit as your final answer:\n\n1. The domain...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 4,
+        "clarity_score": 5,
+        "completeness_score": 7,
+        "step_by_step_quality": 6,
+        "overall_quality": 5,
+        "strengths": [
+          "Attempts to break down the solution into steps",
+          "Identifies key concepts such as domain and asymptotes"
+        ],
+        "weaknesses": [
+          "Lacks precision in some mathematical derivations",
+          "Could improve in explaining complex concepts more clearly"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 7,
+        "simplicity_score": 5,
+        "clarity_score": 6,
+        "completeness_score": 8,
+        "step_by_step_quality": 7,
+        "overall_quality": 6,
+        "strengths": [
+          "Provides a clear step-by-step approach to solving the problem",
+          "Improves upon the initial response with more detailed explanations"
+        ],
+        "weaknesses": [
+          "Still lacks in fully addressing all aspects of the problem with depth",
+          "Some explanations could be more concise without losing clarity"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Better identification and explanation of intervals of increase and decrease",
+          "Improved handling of concavity and points of inflection"
+        ],
+        "remaining_issues": [
+          "Further refinement needed in explaining complex derivative calculations",
+          "Enhancing the clarity of key mathematical concepts"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 8,
+        "explanation_quality": 7,
+        "pedagogical_value": 8,
+        "error_reduction": 7,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 16.666666666666664,
+      "overall_improvement_percent": 20.0,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 6.0,
+      "refined_quality_index": 7.0,
+      "human_feedback_impact": 0.8
+    },
+    "summary_metrics": {
+      "initial_quality": 5,
+      "refined_quality": 6,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 8,
+    "uuid": "7836bb59-a1e0-4aff-ba47-a97fb07b38df",
+    "subject": "integral_calc",
+    "query_preview": "Solve the integral:\n$$\n\\int 3 \\cdot \\sin(2 \\cdot x)^4 \\cdot \\cos(2 \\cdot x)^2 \\, dx\n$$",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 6,
+        "step_by_step_quality": 7,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step approach",
+          "Attempt to simplify the integral using trigonometric identities",
+          "Use of substitution to simplify the integral"
+        ],
+        "weaknesses": [
+          "Failure to correctly apply trigonometric identities to simplify the integral",
+          "Incorrect final solution",
+          "Lack of verification of the result"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 6,
+        "step_by_step_quality": 7,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step approach",
+          "Attempt to simplify the integral using trigonometric identities",
+          "Use of substitution to simplify the integral"
+        ],
+        "weaknesses": [
+          "Failure to correctly apply trigonometric identities to simplify the integral",
+          "Incorrect final solution",
+          "Lack of verification of the result"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 2,
+        "refinement_effectiveness": 4,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Minor reorganization of steps for clarity",
+          "Attempt to directly address the integral"
+        ],
+        "remaining_issues": [
+          "Incorrect application of trigonometric identities",
+          "Failure to reach the correct final solution",
+          "Need for a more accurate and straightforward approach"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 4,
+        "explanation_quality": 7,
+        "pedagogical_value": 6,
+        "error_reduction": 3,
+        "conceptual_clarity": 5
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 0,
+      "overall_improvement": 0,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 0.0,
+      "refinement_success_score": 4.6,
+      "initial_quality_index": 6.666666666666667,
+      "refined_quality_index": 6.666666666666667,
+      "human_feedback_impact": 0.0
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 7,
+      "improvement_score": 2,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.6,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 9,
+    "uuid": "275f7ceb-f331-4a3f-96ec-346e6d81b32a",
+    "subject": "integral_calc",
+    "query_preview": "Solve the integral:\n$$\n\\int \\frac{ 1 }{ \\sin(8 \\cdot x)^5 } \\, dx\n$$",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 4,
+        "clarity_score": 5,
+        "completeness_score": 7,
+        "step_by_step_quality": 6,
+        "overall_quality": 5.6,
+        "strengths": [
+          "Attempts to apply reduction formula",
+          "Recognizes the need for trigonometric substitution"
+        ],
+        "weaknesses": [
+          "Lack of clarity in simplification steps",
+          "Failure to fully simplify the expression",
+          "Does not directly address the chain rule and its implications"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 7,
+        "overall_quality": 7.2,
+        "strengths": [
+          "Applies reduction formula correctly",
+          "Improves simplification and clarity",
+          "Considers the chain rule implicitly"
+        ],
+        "weaknesses": [
+          "Still lacks direct verification of the solution",
+          "Could further simplify the final expression",
+          "Does not fully address domain considerations"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Improved application of reduction formula",
+          "Enhanced clarity in step-by-step explanation",
+          "Better handling of trigonometric identities"
+        ],
+        "remaining_issues": [
+          "Need for direct verification of the solution",
+          "Further simplification of the final expression",
+          "Explicit consideration of domain restrictions"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 8,
+        "explanation_quality": 7,
+        "pedagogical_value": 8,
+        "error_reduction": 7,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 2,
+      "simplicity_improvement": 2,
+      "overall_improvement": 1.6000000000000005,
+      "correctness_improvement_percent": 33.33333333333333,
+      "overall_improvement_percent": 28.57142857142858,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 6.0,
+      "refined_quality_index": 7.666666666666667,
+      "human_feedback_impact": 1.2800000000000005
+    },
+    "summary_metrics": {
+      "initial_quality": 5.6,
+      "refined_quality": 7.2,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1.6000000000000005,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 1.2800000000000005
+    }
+  },
+  {
+    "entry_id": 10,
+    "uuid": "ccfa5962-71e5-4955-bc2d-c91098f2cd13",
+    "subject": "integral_calc",
+    "query_preview": "Solve the integral:\n$$\n\\int \\frac{ 20 \\cdot \\cos(-10 \\cdot x)^3 }{ 21 \\cdot \\sin(-10 \\cdot x)^7 } \\,...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 4,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 8,
+        "overall_quality": 6,
+        "strengths": [
+          "The response provides a clear step-by-step solution to the integral.",
+          "It correctly applies trigonometric identities and substitution methods."
+        ],
+        "weaknesses": [
+          "The solution does not fully simplify the integral to match the golden answer.",
+          "There's room for improvement in explaining the substitution process and handling of the negative sign."
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 5,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 8,
+        "strengths": [
+          "The refined response improves upon the initial by more accurately handling the negative sign and trigonometric identities.",
+          "It provides a clearer explanation of the substitution process."
+        ],
+        "weaknesses": [
+          "The solution still does not fully align with the golden answer, indicating a need for further simplification or correction.",
+          "Some steps could be further clarified for better understanding."
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Improved handling of the negative sign in the trigonometric functions.",
+          "Enhanced clarity in the substitution process."
+        ],
+        "remaining_issues": [
+          "The final simplified form does not match the golden answer, suggesting a need for reevaluation.",
+          "Further clarification on certain steps could enhance educational value."
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 8,
+        "explanation_quality": 8,
+        "pedagogical_value": 7,
+        "error_reduction": 8,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 2,
+      "simplicity_improvement": 1,
+      "overall_improvement": 2,
+      "correctness_improvement_percent": 33.33333333333333,
+      "overall_improvement_percent": 33.33333333333333,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 7.0,
+      "refined_quality_index": 8.333333333333334,
+      "human_feedback_impact": 1.4
+    },
+    "summary_metrics": {
+      "initial_quality": 6,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 2,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 1.4
+    }
+  },
+  {
+    "entry_id": 11,
+    "uuid": "849aee88-91bf-42c9-9241-e0e9af266311",
+    "subject": "integral_calc",
+    "query_preview": "Compute the integral:\n$$\n\\int \\frac{ \\sqrt{4+x^2} }{ x } \\, dx\n$$",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 4,
+        "clarity_score": 5,
+        "completeness_score": 7,
+        "step_by_step_quality": 6,
+        "overall_quality": 5,
+        "strengths": [
+          "Attempts to use trigonometric substitution",
+          "Recognizes the need for a standard integral form"
+        ],
+        "weaknesses": [
+          "Misdirected steps in the integration process",
+          "Lack of clarity in explaining the substitution method",
+          "Failure to directly apply the correct trigonometric identities"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Correctly applies trigonometric substitution",
+          "Clearly explains the integration process",
+          "Provides a detailed step-by-step solution"
+        ],
+        "weaknesses": [
+          "The explanation is lengthy and could be simplified further",
+          "Some steps could be more concise"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Correct application of trigonometric substitution",
+          "Clear and detailed step-by-step explanation",
+          "Improved handling of the integral"
+        ],
+        "remaining_issues": [
+          "Lengthy explanation",
+          "Minor simplifications possible"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 3,
+      "simplicity_improvement": 3,
+      "overall_improvement": 3,
+      "correctness_improvement_percent": 50.0,
+      "overall_improvement_percent": 60.0,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 6.0,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 2.4
+    },
+    "summary_metrics": {
+      "initial_quality": 5,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 3,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 2.4
+    }
+  },
+  {
+    "entry_id": 12,
+    "uuid": "755ad080-c182-4f30-96a4-1a2cb0462824",
+    "subject": "multivariable_calculus",
+    "query_preview": "Find $I=\\int_{0}^\\pi \\int_{0}^{4 \\cdot \\sin\\left(\\theta\\right)} \\frac{ 4 }{ \\sqrt{16-r^2} } \\cdot r ...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 0,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Well-structured approach to solving the integral"
+        ],
+        "weaknesses": [
+          "Incorrect final answer",
+          "Lack of verification with the given ground truth"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 0,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Well-structured approach to solving the integral"
+        ],
+        "weaknesses": [
+          "Incorrect final answer",
+          "Lack of verification with the given ground truth",
+          "No refinement or correction from the initial response"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 0,
+        "refinement_effectiveness": 0,
+        "human_feedback_importance": 10,
+        "key_improvements": [],
+        "remaining_issues": [
+          "Incorrect final answer",
+          "Need for a correct and verified solution"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 0,
+        "explanation_quality": 9,
+        "pedagogical_value": 8,
+        "error_reduction": 0,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 0,
+      "overall_improvement": 0,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 0.0,
+      "refinement_success_score": 3.0,
+      "initial_quality_index": 6.0,
+      "refined_quality_index": 6.0,
+      "human_feedback_impact": 0.0
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 7,
+      "improvement_score": 0,
+      "human_feedback_importance": 10,
+      "overall_improvement": 0,
+      "refinement_success_score": 3.0,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 13,
+    "uuid": "13af41aa-a2d3-4154-8c2f-cc9fb3ecf5ad",
+    "subject": "multivariable_calculus",
+    "query_preview": "Find the mass of the solid $Q=\\left\\{(x,y,z) | 1 \\le x^2+z^2 \\le 25, y \\le 1-x^2-z^2 \\right\\}$ whose...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 8,
+        "step_by_step_quality": 8,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Attempts to convert to cylindrical coordinates for easier integration",
+          "Recognizes the need for absolute value in mass calculation"
+        ],
+        "weaknesses": [
+          "Incorrect sign in the integration result due to misunderstanding of the bounds",
+          "Miscalculation in the integral with respect to r",
+          "Lack of clarity in explaining the correction for the negative lower bound of y"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 8,
+        "strengths": [
+          "Corrects the mistake in the integration bounds and sign",
+          "Provides a clearer explanation of the conversion to cylindrical coordinates",
+          "Improves the step-by-step quality with more detailed explanations"
+        ],
+        "weaknesses": [
+          "Still contains some redundancy in explanation",
+          "Could further simplify the mathematical expressions for clarity",
+          "Does not explicitly state the final correct answer in the refined steps"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Correction of the integration bounds and sign",
+          "Enhanced clarity in the step-by-step explanation",
+          "Improved recognition of the absolute value in mass calculation"
+        ],
+        "remaining_issues": [
+          "Some redundancy in the explanation",
+          "Lack of explicit statement of the final correct answer",
+          "Minor simplification opportunities in mathematical expressions"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 8,
+        "explanation_quality": 9,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 2,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 33.33333333333333,
+      "overall_improvement_percent": 14.285714285714285,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 7.333333333333333,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.8
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 14,
+    "uuid": "d6fcf747-13d5-42bb-99f4-1c6e55d5cdb5",
+    "subject": "multivariable_calculus",
+    "query_preview": "Consider a rectangular box of width $w$, length $l$, and height $h$ without a lid. If the box is to ...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 6,
+        "simplicity_score": 4,
+        "clarity_score": 5,
+        "completeness_score": 7,
+        "step_by_step_quality": 6,
+        "overall_quality": 5,
+        "strengths": [
+          "Attempts to apply mathematical principles",
+          "Tries to break down the solution into steps"
+        ],
+        "weaknesses": [
+          "Contains errors in calculation and application of formulas",
+          "Lacks clarity in explaining key concepts",
+          "Overly complicated steps"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 9,
+        "strengths": [
+          "Accurately applies mathematical principles",
+          "Clearly explains each step of the solution",
+          "Simplifies the explanation"
+        ],
+        "weaknesses": [
+          "Could further simplify some steps",
+          "Assumes a high level of prior knowledge"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Correction of mathematical errors",
+          "Simplification of the explanation",
+          "Improved clarity"
+        ],
+        "remaining_issues": [
+          "Some steps could be further simplified",
+          "Assumes a certain level of mathematical maturity"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 3,
+      "simplicity_improvement": 4,
+      "overall_improvement": 4,
+      "correctness_improvement_percent": 50.0,
+      "overall_improvement_percent": 80.0,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 6.0,
+      "refined_quality_index": 9.0,
+      "human_feedback_impact": 2.8
+    },
+    "summary_metrics": {
+      "initial_quality": 5,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 4,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 2.8
+    }
+  },
+  {
+    "entry_id": 15,
+    "uuid": "7edd29b3-3371-4552-8048-2d9b0fdc6006",
+    "subject": "multivariable_calculus",
+    "query_preview": "The following vectors are given:\n\n$u = 2 \\cdot \\mathbf{i} - 3 \\cdot \\mathbf{j} + 2 \\cdot \\mathbf{k}$...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Correct application of vector projection formula",
+          "Complete coverage of the problem"
+        ],
+        "weaknesses": [
+          "Final answer does not match the golden answer",
+          "Lack of simplicity in some steps",
+          "Minor clarity issues in the explanation"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 7,
+        "strengths": [
+          "Clear step-by-step explanation",
+          "Correct application of vector projection formula",
+          "Complete coverage of the problem"
+        ],
+        "weaknesses": [
+          "Final answer still does not match the golden answer",
+          "Lack of simplicity in some steps",
+          "Minor clarity issues in the explanation"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 2,
+        "refinement_effectiveness": 4,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "None, as the refined response is identical to the initial response"
+        ],
+        "remaining_issues": [
+          "Final answer does not match the golden answer",
+          "Lack of simplicity and clarity in some steps"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 8,
+        "explanation_quality": 7,
+        "pedagogical_value": 8,
+        "error_reduction": 6,
+        "conceptual_clarity": 7
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 0,
+      "overall_improvement": 0,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 0.0,
+      "refinement_success_score": 4.6,
+      "initial_quality_index": 8.0,
+      "refined_quality_index": 8.0,
+      "human_feedback_impact": 0.0
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 7,
+      "improvement_score": 2,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.6,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 16,
+    "uuid": "772d7be7-01a3-4370-b536-4a7ceed86f31",
+    "subject": "precalculus_review",
+    "query_preview": "Solve $x \\cdot (x+1) \\cdot (x+2) \\cdot (x+3) = 0.5625$.",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 7,
+        "overall_quality": 7,
+        "strengths": [
+          "The response attempts to break down the solution into manageable steps.",
+          "It recognizes the complexity of solving quartic equations and suggests numerical methods.",
+          "The trial and error approach leads to finding a correct solution."
+        ],
+        "weaknesses": [
+          "The response lacks a systematic approach to solving the quartic equation.",
+          "It does not provide a clear justification for why certain values are chosen for trial and error.",
+          "The explanation could be more concise and directly related to the problem at hand."
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "The refined response improves upon the initial by providing a clearer justification for the choice of trial values.",
+          "It maintains a step-by-step approach that is easier to follow.",
+          "The verification step adds to the completeness of the solution."
+        ],
+        "weaknesses": [
+          "The response still relies heavily on trial and error rather than a systematic method for solving quartic equations.",
+          "Some steps could be further simplified or combined for better clarity.",
+          "The mention of a systematic approach is brief and could be expanded upon."
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Improved justification for the choice of trial values.",
+          "Enhanced clarity in the step-by-step explanation.",
+          "Addition of a verification step."
+        ],
+        "remaining_issues": [
+          "Lack of a systematic method for solving quartic equations.",
+          "Potential for further simplification of steps.",
+          "Brief mention of systematic approaches without elaboration."
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 8,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 2,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 14.285714285714285,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 7.666666666666667,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 17,
+    "uuid": "2b575acf-e40a-4b0a-9ad7-099c38d6206c",
+    "subject": "precalculus_review",
+    "query_preview": "For both $y=a^x$ and $y=\\log_{a}(x)$ where $a>0$ and $a \\ne 1$, find the $P(x,y)$ coordinate where t...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 2,
+        "simplicity_score": 4,
+        "clarity_score": 6,
+        "completeness_score": 5,
+        "step_by_step_quality": 7,
+        "overall_quality": 5,
+        "strengths": [
+          "Attempts to break down the problem into steps",
+          "Recognizes the need to find where the slope of both functions equals 1"
+        ],
+        "weaknesses": [
+          "Incorrectly solves for x and y",
+          "Fails to correctly apply the condition for the slope of both functions to be 1",
+          "Does not correctly use the given equations to find the point P(x, y)"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 2,
+        "simplicity_score": 4,
+        "clarity_score": 6,
+        "completeness_score": 5,
+        "step_by_step_quality": 7,
+        "overall_quality": 5,
+        "strengths": [
+          "Similar to the initial response, attempts to break down the problem",
+          "Recognizes the derivatives of the given functions"
+        ],
+        "weaknesses": [
+          "Still incorrectly solves for x and y",
+          "Does not correctly apply the derivatives to find the point where the slope is 1",
+          "Fails to provide a clear and correct solution to the problem"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 1,
+        "refinement_effectiveness": 2,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "None significant"
+        ],
+        "remaining_issues": [
+          "Incorrect application of mathematical principles",
+          "Failure to correctly solve for x and y",
+          "Lack of clarity in explaining the solution process"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 2,
+        "explanation_quality": 5,
+        "pedagogical_value": 4,
+        "error_reduction": 1,
+        "conceptual_clarity": 3
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 0,
+      "simplicity_improvement": 0,
+      "overall_improvement": 0,
+      "correctness_improvement_percent": 0.0,
+      "overall_improvement_percent": 0.0,
+      "refinement_success_score": 3.5,
+      "initial_quality_index": 4.333333333333333,
+      "refined_quality_index": 4.333333333333333,
+      "human_feedback_impact": 0.0
+    },
+    "summary_metrics": {
+      "initial_quality": 5,
+      "refined_quality": 5,
+      "improvement_score": 1,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 3.5,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 18,
+    "uuid": "d16d84d7-3932-44f0-89ff-521caa493041",
+    "subject": "precalculus_review",
+    "query_preview": "Recall the following double-angle formulas:\n\n1. $\\sin\\left(2 \\cdot \\theta\\right) = 2 \\cdot \\sin\\left...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8.5,
+        "strengths": [
+          "Correctly applies double-angle formulas",
+          "Provides clear step-by-step solutions",
+          "Covers all aspects of the problem"
+        ],
+        "weaknesses": [
+          "Could improve in terms of simplicity and clarity",
+          "Some steps could be more concise"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 10,
+        "simplicity_score": 9,
+        "clarity_score": 9,
+        "completeness_score": 10,
+        "step_by_step_quality": 9,
+        "overall_quality": 9.5,
+        "strengths": [
+          "Refined steps are more concise and clear",
+          "Improved simplicity and clarity",
+          "Maintains correctness and completeness"
+        ],
+        "weaknesses": [
+          "Minor adjustments could further enhance clarity"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Simplified and clarified step-by-step explanations",
+          "Improved formatting for better readability"
+        ],
+        "remaining_issues": [
+          "Minor opportunities for further simplification"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 10,
+        "explanation_quality": 9,
+        "pedagogical_value": 9,
+        "error_reduction": 10,
+        "conceptual_clarity": 9
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1.0,
+      "correctness_improvement_percent": 11.11111111111111,
+      "overall_improvement_percent": 11.76470588235294,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 8.666666666666666,
+      "refined_quality_index": 9.666666666666666,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 8.5,
+      "refined_quality": 9.5,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1.0,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 19,
+    "uuid": "84faeb60-6ed1-4ef8-b2cc-23a767cfb04e",
+    "subject": "precalculus_review",
+    "query_preview": "Solve the following system of equations:\n\n1. $x + y = \\frac{ 2 \\cdot \\pi }{ 3 }$\n2. $\\frac{ \\sin(x) ...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 8,
+        "overall_quality": 7.5,
+        "strengths": [
+          "The response provides a clear step-by-step solution to the problem.",
+          "It correctly applies trigonometric identities and equations.",
+          "The explanation is generally easy to follow."
+        ],
+        "weaknesses": [
+          "The solution could be simplified in some steps.",
+          "There are some minor errors in calculation that do not affect the final answer.",
+          "More attention could be given to explaining the reasoning behind certain steps."
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 8.5,
+        "strengths": [
+          "The refined response maintains the clarity and step-by-step quality of the initial response.",
+          "It corrects minor errors and simplifies explanations where possible.",
+          "The solution is more polished and easier to understand."
+        ],
+        "weaknesses": [
+          "Some steps could still be further simplified or explained more intuitively.",
+          "There is room for improvement in providing additional context or explanations for certain mathematical concepts.",
+          "The response could benefit from a brief summary or introduction to the problem and its significance."
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Correction of minor errors and inconsistencies.",
+          "Simplification of certain steps and explanations.",
+          "Improved clarity and readability."
+        ],
+        "remaining_issues": [
+          "Some areas could benefit from further simplification or more intuitive explanations.",
+          "Additional context or background information could enhance the response.",
+          "Minor formatting or typographical errors."
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1.0,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 13.333333333333334,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 7.666666666666667,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.8
+    },
+    "summary_metrics": {
+      "initial_quality": 7.5,
+      "refined_quality": 8.5,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1.0,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 20,
+    "uuid": "7888c61c-8515-4146-b87d-2ca3f2030b2c",
+    "subject": "sequences_series",
+    "query_preview": "Compute $\\sqrt[5]{240}$ with an accuracy of $0.0001$.",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 7,
+        "overall_quality": 7,
+        "strengths": [
+          "Applies the Newton-Raphson method correctly",
+          "Provides a clear initial guess and iteration process",
+          "Attempts to calculate the fifth root with the required accuracy"
+        ],
+        "weaknesses": [
+          "Lacks detailed calculations for the second iteration",
+          "Does not explicitly state the stopping criterion",
+          "Could improve in explaining the choice of initial guess"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Provides detailed calculations for the second iteration",
+          "Clearly states the stopping criterion and verifies the result",
+          "Improves explanation of the Newton-Raphson method application"
+        ],
+        "weaknesses": [
+          "Could further simplify the explanation of the Newton-Raphson method",
+          "Some steps could be more concise without losing clarity"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Added detailed calculations for the second iteration",
+          "Clearly defined the stopping criterion",
+          "Improved verification of the result"
+        ],
+        "remaining_issues": [
+          "Minor simplifications could enhance readability",
+          "Further clarification on the choice of initial guess might be beneficial"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 14.285714285714285,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 7.666666666666667,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 21,
+    "uuid": "1e99cf2f-e67e-45fd-9560-c7d532daf02a",
+    "subject": "sequences_series",
+    "query_preview": "Find the Fourier series of the periodic function $f(x) = \\frac{ x^2 }{ 3 }$ in the interval $-4 \\cdo...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 8,
+        "step_by_step_quality": 7,
+        "overall_quality": 7,
+        "strengths": [
+          "Correctly identifies the periodic function and its period",
+          "Properly applies the Fourier series formula",
+          "Correctly calculates $a_0$ and $a_n$"
+        ],
+        "weaknesses": [
+          "Could improve in explaining the integration by parts process",
+          "Some steps could be more clearly explained"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Provides a clear and detailed explanation of each step",
+          "Correctly calculates $a_0$, $a_n$, and addresses $b_n$",
+          "Improves upon the initial response with clearer explanations"
+        ],
+        "weaknesses": [
+          "Still some room for simplification in the explanation of complex integrals",
+          "Minor typos or formatting issues"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Clearer step-by-step explanations",
+          "Improved calculation and explanation of $a_n$",
+          "Acknowledgment of $b_n = 0$ due to the even nature of $f(x)$"
+        ],
+        "remaining_issues": [
+          "Minor areas for further simplification or clarification",
+          "Potential for additional examples or illustrations to enhance understanding"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 8
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 14.285714285714285,
+      "refinement_success_score": 8.4,
+      "initial_quality_index": 7.666666666666667,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.8
+    },
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 22,
+    "uuid": "c93e2665-a4ed-40fb-85e2-4c28ad0dced4",
+    "subject": "sequences_series",
+    "query_preview": "Evaluate $\\sum_{n=2}^\\infty\\frac{ n \\cdot (n-1) }{ 2^n }$ as $f''\\left(\\frac{ 1 }{ 2 }\\right)$ where...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "Correctly identifies the function and its series",
+          "Properly recalls the sum of an infinite geometric series",
+          "Correctly finds the first and second derivatives of f(x)",
+          "Effectively evaluates f''(1/2) and relates it to the given series"
+        ],
+        "weaknesses": [
+          "Explanation could be more concise",
+          "Some steps could be more clearly connected to the overall solution"
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 8,
+        "clarity_score": 9,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "Maintains mathematical accuracy",
+          "Improves clarity and simplicity of the explanation",
+          "More effectively connects steps to the overall solution",
+          "Retains completeness and step-by-step quality"
+        ],
+        "weaknesses": [
+          "Minor adjustments could further enhance simplicity"
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 8,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 7,
+        "key_improvements": [
+          "Enhanced clarity and simplicity",
+          "Better connection between steps and overall solution"
+        ],
+        "remaining_issues": [
+          "Minor potential for further simplification"
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 9,
+        "pedagogical_value": 8,
+        "error_reduction": 9,
+        "conceptual_clarity": 9
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 2,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 12.5,
+      "refinement_success_score": 8.1,
+      "initial_quality_index": 8.0,
+      "refined_quality_index": 9.0,
+      "human_feedback_impact": 0.7
+    },
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 23,
+    "uuid": "840a022b-2ef4-4fad-868b-52d564d2f551",
+    "subject": "sequences_series",
+    "query_preview": "Find a \u0083??reasonable\u0083?\u009d upper-bound on the error in approximating $f(x) = x \\cdot \\ln(x)$ by its 3rd...",
+    "llm_evaluation": {
+      "initial_response_evaluation": {
+        "correctness_score": 8,
+        "simplicity_score": 6,
+        "clarity_score": 7,
+        "completeness_score": 9,
+        "step_by_step_quality": 8,
+        "overall_quality": 8,
+        "strengths": [
+          "The response provides a clear step-by-step solution to the problem.",
+          "It correctly applies Taylor's Theorem to estimate the error.",
+          "The calculations are detailed and easy to follow."
+        ],
+        "weaknesses": [
+          "The final answer does not match the golden answer, indicating a potential mistake in the calculations.",
+          "The explanation could be more concise and directly related to the problem at hand."
+        ]
+      },
+      "refined_response_evaluation": {
+        "correctness_score": 9,
+        "simplicity_score": 7,
+        "clarity_score": 8,
+        "completeness_score": 9,
+        "step_by_step_quality": 9,
+        "overall_quality": 9,
+        "strengths": [
+          "The refined response corrects the mistake in the initial response, providing the correct final answer.",
+          "It maintains a clear and step-by-step approach to solving the problem.",
+          "The calculations are accurate and well-explained."
+        ],
+        "weaknesses": [
+          "The explanation, while clear, could still be more concise and directly focused on the key aspects of the problem.",
+          "There is room for minor improvements in formatting and presentation to enhance readability."
+        ]
+      },
+      "comparison_metrics": {
+        "improvement_score": 9,
+        "refinement_effectiveness": 9,
+        "human_feedback_importance": 8,
+        "key_improvements": [
+          "Correction of the final answer to match the golden answer.",
+          "Maintenance of clarity and step-by-step quality in the explanation."
+        ],
+        "remaining_issues": [
+          "Minor improvements in conciseness and formatting could further enhance the response."
+        ]
+      },
+      "quality_metrics": {
+        "mathematical_accuracy": 9,
+        "explanation_quality": 8,
+        "pedagogical_value": 9,
+        "error_reduction": 9,
+        "conceptual_clarity": 9
+      }
+    },
+    "calculated_metrics": {
+      "correctness_improvement": 1,
+      "simplicity_improvement": 1,
+      "overall_improvement": 1,
+      "correctness_improvement_percent": 12.5,
+      "overall_improvement_percent": 12.5,
+      "refinement_success_score": 8.7,
+      "initial_quality_index": 8.0,
+      "refined_quality_index": 8.666666666666666,
+      "human_feedback_impact": 0.8
+    },
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 9,
+      "improvement_score": 9,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.7,
+      "human_feedback_impact": 0.8
+    }
+  }
+]

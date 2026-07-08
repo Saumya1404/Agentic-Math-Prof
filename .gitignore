@@ -56,3 +56,6 @@ Data/
 
 # Local lockfiles for tools (local-only)
 mcp_servers/websearch/uv.lock
+docs/
+results/
+.opencode

@@ -1,0 +1,128 @@
+uuid,subject,has_image,image,golden_answer,problem_statement
+790253e0-8f58-47bc-92b9-ac728a08533a,algebra,FALSE,,The final answer: $\frac{6\cdot p-2\cdot q}{p\cdot q}$,"Subtract the rational expression, then simplify:
+
+$$
+\frac{ 12 }{ 2 \cdot q }-\frac{ 6 }{ 3 \cdot p }
+$$"
+1af0e1dd-7848-4c91-a8bd-ef00777094a3,algebra,FALSE,,The final answer: $3$,"An epidemiological study of the spread of a certain influenza strain that hit a small school population found that the total number of students, $P$, who contracted the flu $t$ days after it broke out is given by the model $P=-t^2+13 \cdot t+130$, where $1 \le t \le 6$. Find the day that $160$ students had the flu. Recall that the restriction on $t$ is at most $6$."
+c251e922-18a0-40d3-a506-3a4d6f32a485,algebra,FALSE,,The rational function satisfying the given conditions is $f(x)=\frac{50\cdot(x-2)\cdot(x+1)}{(x+5)\cdot(x-5)}$,"Write an expression for a rational function with the given characteristics:
+
+1. vertical asymptotes $x=-5$ and $x=5$,
+2. x-intercepts at $P(2,0)$ and $P(-1,0)$,
+3. y-intercept at $P(0,4)$."
+83a37faf-1b91-4237-bf28-3ddc2db64ef4,algebra,FALSE,,"1. $\frac{1}{27}$ cm². (Enter an exact solution as a fraction.)
+2. $2.52$ hours. (Enter an approximate solution rounded to 2 decimal places.)","A biologist observes that a certain bacterial colony triples every 4 hours and after 12 hours occupies 1 square centimeter.
+
+1. How much area was occupied by the colony when first observed?
+2. What is the doubling time for the colony?"
+7efd2ae1-d387-447f-ad12-4b0dc2ab7a22,differential_calc,FALSE,,"1. The domain (in interval notation): $(-1\cdot\infty,\infty)$
+2. Vertical asymptotes: None
+3. Horizontal asymptotes: None
+4. Slant asymptotes: None
+5. Intervals where the function is increasing: $\left(-\infty,-\frac{\sqrt{3}}{\sqrt{2}}\right)$, $\left(0,\frac{\sqrt{3}}{\sqrt{2}}\right)$
+6. Intervals where the function is decreasing: $\left(-\frac{\sqrt{3}}{\sqrt{2}},0\right)$, $\left(\frac{\sqrt{3}}{\sqrt{2}},\infty\right)$
+7. Intervals where the function is concave up: $\left(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)$
+8. Intervals where the function is concave down: $\left(-\infty,-\frac{1}{\sqrt{2}}\right)$, $\left(\frac{1}{\sqrt{2}},\infty\right)$
+9. Points of inflection: $P\left(-\frac{1}{\sqrt{2}},-\frac{3}{4}\right)$, $P\left(\frac{1}{\sqrt{2}},-\frac{3}{4}\right)$","Sketch the curve:  
+
+$y = 3 \cdot x^2 - x^4 - 2$.
+
+Submit as your final answer:
+
+1. The domain (in interval notation)
+2. Vertical asymptotes (Leave blank if there are no vertical asymptotes)
+3. Horizontal asymptotes (Leave blank if there are no horizontal asymptotes)
+4. Slant asymptotes (Leave blank if there are no slant asymptotes)
+5. Intervals where the function is increasing (Leave blank if there are no such intervals)
+6. Intervals where the function is decreasing (Leave blank if there are no such intervals)
+7. Intervals where the function is concave up (Leave blank if there are no such intervals)
+8. Intervals where the function is concave down (Leave blank if there are no such intervals)
+9. Points of inflection (Leave blank if there are no points of inflection)"
+272ed29b-1de2-48d4-a63d-c8c7173b76ef,differential_calc,FALSE,,$f'(1)$ = $-0.5244$,Compute the derivative of the function $f(x) = \sqrt[x]{3} + \frac{ 1 }{ 6^{5 \cdot x} } + 4^{\sqrt{x}}$ at $x = 1$.
+c80d8185-edc4-4a44-9e58-dcab9d666178,differential_calc,FALSE,,"1. Local Maximum(s) $P\left(\frac{3}{2},\frac{\pi}{4}\right)$;
+2. Local Minimum(s) $P(1,0)$, $P(2,0)$.","Find any local extrema for $s = \left| \arctan\left(4 \cdot x^2 - 12 \cdot x + 8\right) \right|$.
+
+Submit as your final answer:
+1. The point(s), where the function has local maximum(s);
+2. The point(s), where the function has local minimum(s)."
+8b909199-f22e-4b2b-90ae-f1b0e119b9d9,differential_calc,FALSE,,"1. The domain (in interval notation): $\left[-1\cdot3^{2^{-1}},3^{2^{-1}}\right]$
+2. Vertical asymptotes: None
+3. Horizontal asymptotes: None
+4. Slant asymptotes: None
+5. Intervals where the function is increasing: $\left(-\sqrt{\frac{3}{2}},\sqrt{\frac{3}{2}}\right)$
+6. Intervals where the function is decreasing: $\left(-3^{2^{-1}},-\sqrt{\frac{3}{2}}\right)$, $\left(\sqrt{\frac{3}{2}},3^{2^{-1}}\right)$
+7. Intervals where the function is concave up: $\left(-3^{2^{-1}},0\right)$
+8. Intervals where the function is concave down: $\left(0,3^{2^{-1}}\right)$
+9. Points of inflection: $P(0,0)$","Sketch the curve:  
+$y = 2 \cdot x \cdot \sqrt{3-x^2}$.
+
+Submit as your final answer:
+
+1. The domain (in interval notation)
+2. Vertical asymptotes
+3. Horizontal asymptotes
+4. Slant asymptotes
+5. Intervals where the function is increasing
+6. Intervals where the function is decreasing
+7. Intervals where the function is concave up
+8. Intervals where the function is concave down
+9. Points of inflection"
+7836bb59-a1e0-4aff-ba47-a97fb07b38df,integral_calc,FALSE,,"$\int 3 \cdot \sin(2 \cdot x)^4 \cdot \cos(2 \cdot x)^2 \, dx$ = $\frac{3}{16}\cdot\left(x-\frac{\sin(8\cdot x)}{8}-\frac{\sin(4\cdot x)}{8}+\frac{\sin(12\cdot x)}{24}\right)+C$","Solve the integral:
+$$
+\int 3 \cdot \sin(2 \cdot x)^4 \cdot \cos(2 \cdot x)^2 \, dx
+$$"
+275f7ceb-f331-4a3f-96ec-346e6d81b32a,integral_calc,FALSE,,The final answer: $C+\frac{1}{128}\cdot\left(2\cdot\left(\tan(4\cdot x)\right)^2+6\cdot\ln\left(\left|\tan(4\cdot x)\right|\right)+\frac{1}{4}\cdot\left(\tan(4\cdot x)\right)^4-\frac{2}{\left(\tan(4\cdot x)\right)^2}-\frac{1}{4\cdot\left(\tan(4\cdot x)\right)^4}\right)$,"Solve the integral:
+$$
+\int \frac{ 1 }{ \sin(8 \cdot x)^5 } \, dx
+$$"
+ccfa5962-71e5-4955-bc2d-c91098f2cd13,integral_calc,FALSE,,"$\int \frac{ 20 \cdot \cos(-10 \cdot x)^3 }{ 21 \cdot \sin(-10 \cdot x)^7 } \, dx$ = $C+\frac{1}{21}\cdot\left(\frac{1}{2}\cdot\left(\cot(10\cdot x)\right)^4+\frac{1}{3}\cdot\left(\cot(10\cdot x)\right)^6\right)$","Solve the integral:
+$$
+\int \frac{ 20 \cdot \cos(-10 \cdot x)^3 }{ 21 \cdot \sin(-10 \cdot x)^7 } \, dx
+$$"
+849aee88-91bf-42c9-9241-e0e9af266311,integral_calc,FALSE,,"$\int \frac{ \sqrt{4+x^2} }{ x } \, dx$ = $C+\sqrt{4+x^2}+\ln\left(\left|\frac{\sqrt{4+x^2}-2}{2+\sqrt{4+x^2}}\right|\right)$","Compute the integral:
+$$
+\int \frac{ \sqrt{4+x^2} }{ x } \, dx
+$$"
+755ad080-c182-4f30-96a4-1a2cb0462824,multivariable_calculus,FALSE,,The final answer: $I=32\cdot\left(\frac{\pi}{2}-1\right)$,"Find $I=\int_{0}^\pi \int_{0}^{4 \cdot \sin\left(\theta\right)} \frac{ 4 }{ \sqrt{16-r^2} } \cdot r \, d r \, d \theta$."
+13af41aa-a2d3-4154-8c2f-cc9fb3ecf5ad,multivariable_calculus,FALSE,,$m$ = $288\cdot\pi\cdot k$,"Find the mass of the solid $Q=\left\{(x,y,z) | 1 \le x^2+z^2 \le 25, y \le 1-x^2-z^2 \right\}$ whose density is $\rho(x,y,z) = k$, where $k > 0$."
+d6fcf747-13d5-42bb-99f4-1c6e55d5cdb5,multivariable_calculus,FALSE,,"Optimal dimensions:
+
+$w$: $2$
+
+$l$: $2$
+
+$h$: $1$
+
+Maximum volume: $4$","Consider a rectangular box of width $w$, length $l$, and height $h$ without a lid. If the box is to be made from $12$ sq. cm of cardboard, find the dimensions that maximize the volume of the box and the maximum possible volume itself."
+7edd29b3-3371-4552-8048-2d9b0fdc6006,multivariable_calculus,FALSE,,The final answer: $w=\frac{9}{11}\cdot i+\frac{6}{11}\cdot j-\frac{9}{11}\cdot k$,"The following vectors are given:
+
+$u = 2 \cdot \mathbf{i} - 3 \cdot \mathbf{j} + 2 \cdot \mathbf{k}$
+
+$v = 3 \cdot \mathbf{i} + 2 \cdot \mathbf{j} - 3 \cdot \mathbf{k}$
+
+Find the following component:
+
+Project of $u$ onto $v$"
+772d7be7-01a3-4370-b536-4a7ceed86f31,precalculus_review,FALSE,,The final answer: $x=-\frac{3}{2} \lor x=\frac{-3+\sqrt{10}}{2} \lor x=\frac{-3-\sqrt{10}}{2}$,Solve $x \cdot (x+1) \cdot (x+2) \cdot (x+3) = 0.5625$.
+2b575acf-e40a-4b0a-9ad7-099c38d6206c,precalculus_review,FALSE,,"Coordinates of $a^x$: $x$ = $-\frac{\ln\left(\ln(a)\right)}{\ln(a)}$ , $y$ = $y=\frac{1}{\ln(a)}$  
+
+Coordinates of $\log_{a}(x)$: $x$ = $x=\frac{1}{\ln(a)}$ , $y$ = $-\frac{\ln\left(\ln(a)\right)}{\ln(a)}$","For both $y=a^x$ and $y=\log_{a}(x)$ where $a>0$ and $a \ne 1$, find the $P(x,y)$ coordinate where the slope of the functions are $1$. Write your answers only in terms of natural logarithms."
+d16d84d7-3932-44f0-89ff-521caa493041,precalculus_review,FALSE,,Part (a): $\sin\left(\theta\right)^2=\frac{1}{2}\cdot\left(1-\cos\left(2\cdot\theta\right)\right)$ Part (b): $\cos\left(\theta\right)^2=\frac{1}{2}\cdot\left(1+\cos\left(2\cdot\theta\right)\right)$,"Recall the following double-angle formulas:
+
+1. $\sin\left(2 \cdot \theta\right) = 2 \cdot \sin\left(\theta\right) \cdot \cos\left(\theta\right)$
+2. $\cos\left(2 \cdot \theta\right) = 2 \cdot \cos\left(\theta\right)^2 - 1$
+3. $\cos\left(2 \cdot \theta\right) = 1 - 2 \cdot \sin\left(\theta\right)^2$
+
+From the formulae, find appropriate expressions for the following, in terms of $\sin\left(2 \cdot \theta\right)$ or $\cos\left(2 \cdot \theta\right)$:  
+[Note: your end answer may contain only one of them.]
+
+1. $\sin\left(\theta\right)^2$
+2. $\cos\left(\theta\right)^2$"
+84faeb60-6ed1-4ef8-b2cc-23a767cfb04e,precalculus_review,FALSE,,"The final answer: $x=\frac{\pi}{2}+\pi\cdot k$, $y=\frac{\pi}{6}-\pi\cdot k$","Solve the following system of equations:
+
+1. $x + y = \frac{ 2 \cdot \pi }{ 3 }$
+2. $\frac{ \sin(x) }{ \sin(y) } = 2$"
+7888c61c-8515-4146-b87d-2ca3f2030b2c,sequences_series,FALSE,,The final answer: $2.9926$,Compute $\sqrt[5]{240}$ with an accuracy of $0.0001$.
+1e99cf2f-e67e-45fd-9560-c7d532daf02a,sequences_series,FALSE,,The Fourier series is: $\frac{16\cdot\pi^2}{9}+\sum_{n=1}^\infty\left(\frac{64\cdot(-1)^n}{3\cdot n^2}\cdot\cos\left(\frac{n\cdot x}{4}\right)\right)$,Find the Fourier series of the periodic function $f(x) = \frac{ x^2 }{ 3 }$ in the interval $-4 \cdot \pi \le x < 4 \cdot \pi$ if $f(x) = f(x + 8 \cdot \pi)$.
+c93e2665-a4ed-40fb-85e2-4c28ad0dced4,sequences_series,FALSE,,$\sum_{n=2}^\infty\frac{ n \cdot (n-1) }{ 2^n }$ = $4$,Evaluate $\sum_{n=2}^\infty\frac{ n \cdot (n-1) }{ 2^n }$ as $f''\left(\frac{ 1 }{ 2 }\right)$ where $f(x) = \sum_{n=0}^\infty x^n$.
+840a022b-2ef4-4fad-868b-52d564d2f551,sequences_series,FALSE,,The final answer: $\frac{2}{(0.3)^3}\cdot\frac{(0.7)^4}{4!}$,Find a “reasonable” upper-bound on the error in approximating $f(x) = x \cdot \ln(x)$ by its 3rd order Taylor polynomial $P_{3}(x)$ at $a = 1$ valid for all values of $x$ such that $|x - 1| \leq 0.7$.

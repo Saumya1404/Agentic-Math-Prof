@@ -1,0 +1,242 @@
+[
+  {
+    "entry_id": 0,
+    "uuid": "790253e0-8f58-47bc-92b9-ac728a08533a",
+    "subject": "algebra",
+    "query_preview": "Subtract the rational expression, then simplify:\n\n$$\n\\frac{ 12 }{ 2 \\cdot q }-\\frac{ 6 }{ 3 \\cdot p ...",
+    "summary_metrics": {
+      "initial_quality": 7.5,
+      "refined_quality": 8.8,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1.3000000000000007,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.9100000000000005
+    }
+  },
+  {
+    "entry_id": 1,
+    "uuid": "1af0e1dd-7848-4c91-a8bd-ef00777094a3",
+    "subject": "algebra",
+    "query_preview": "An epidemiological study of the spread of a certain influenza strain that hit a small school populat...",
+    "summary_metrics": {
+      "initial_quality": 9,
+      "refined_quality": 9,
+      "improvement_score": 2,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 3.8,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 2,
+    "uuid": "c251e922-18a0-40d3-a506-3a4d6f32a485",
+    "subject": "algebra",
+    "query_preview": "Write an expression for a rational function with the given characteristics:\n\n1. vertical asymptotes ...",
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 3,
+    "uuid": "83a37faf-1b91-4237-bf28-3ddc2db64ef4",
+    "subject": "algebra",
+    "query_preview": "A biologist observes that a certain bacterial colony triples every 4 hours and after 12 hours occupi...",
+    "summary_metrics": {
+      "initial_quality": 9,
+      "refined_quality": 9,
+      "improvement_score": 2,
+      "human_feedback_importance": 6,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.0,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 4,
+    "uuid": "7efd2ae1-d387-447f-ad12-4b0dc2ab7a22",
+    "subject": "differential_calc",
+    "query_preview": "Sketch the curve:  \n\n$y = 3 \\cdot x^2 - x^4 - 2$.\n\nSubmit as your final answer:\n\n1. The domain (in i...",
+    "summary_metrics": {
+      "initial_quality": 8,
+      "refined_quality": 9,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 5,
+    "uuid": "272ed29b-1de2-48d4-a63d-c8c7173b76ef",
+    "subject": "differential_calc",
+    "query_preview": "Compute the derivative of the function $f(x) = \\sqrt[x]{3} + \\frac{ 1 }{ 6^{5 \\cdot x} } + 4^{\\sqrt{...",
+    "summary_metrics": {
+      "initial_quality": 7.6,
+      "refined_quality": 8.4,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0.8000000000000007,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.6400000000000006
+    }
+  },
+  {
+    "entry_id": 6,
+    "uuid": "c80d8185-edc4-4a44-9e58-dcab9d666178",
+    "subject": "differential_calc",
+    "query_preview": "Find any local extrema for $s = \\left| \\arctan\\left(4 \\cdot x^2 - 12 \\cdot x + 8\\right) \\right|$.\n\nS...",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 7,
+    "uuid": "8b909199-f22e-4b2b-90ae-f1b0e119b9d9",
+    "subject": "differential_calc",
+    "query_preview": "Sketch the curve:  \n$y = 2 \\cdot x \\cdot \\sqrt{3-x^2}$.\n\nSubmit as your final answer:\n\n1. The domain...",
+    "summary_metrics": {
+      "initial_quality": 5,
+      "refined_quality": 5,
+      "improvement_score": 2,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.2,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 8,
+    "uuid": "7836bb59-a1e0-4aff-ba47-a97fb07b38df",
+    "subject": "integral_calc",
+    "query_preview": "Solve the integral:\n$$\n\\int 3 \\cdot \\sin(2 \\cdot x)^4 \\cdot \\cos(2 \\cdot x)^2 \\, dx\n$$",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 7,
+      "improvement_score": 4,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 6.0,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 9,
+    "uuid": "275f7ceb-f331-4a3f-96ec-346e6d81b32a",
+    "subject": "integral_calc",
+    "query_preview": "Solve the integral:\n$$\n\\int \\frac{ 1 }{ \\sin(8 \\cdot x)^5 } \\, dx\n$$",
+    "summary_metrics": {
+      "initial_quality": 5.5,
+      "refined_quality": 7.2,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1.7000000000000002,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 1.36
+    }
+  },
+  {
+    "entry_id": 10,
+    "uuid": "ccfa5962-71e5-4955-bc2d-c91098f2cd13",
+    "subject": "integral_calc",
+    "query_preview": "Solve the integral:\n$$\n\\int \\frac{ 20 \\cdot \\cos(-10 \\cdot x)^3 }{ 21 \\cdot \\sin(-10 \\cdot x)^7 } \\,...",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 0.8
+    }
+  },
+  {
+    "entry_id": 11,
+    "uuid": "849aee88-91bf-42c9-9241-e0e9af266311",
+    "subject": "integral_calc",
+    "query_preview": "Compute the integral:\n$$\n\\int \\frac{ \\sqrt{4+x^2} }{ x } \\, dx\n$$",
+    "summary_metrics": {
+      "initial_quality": 5,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 8,
+      "overall_improvement": 3,
+      "refinement_success_score": 8.4,
+      "human_feedback_impact": 2.4
+    }
+  },
+  {
+    "entry_id": 12,
+    "uuid": "755ad080-c182-4f30-96a4-1a2cb0462824",
+    "subject": "multivariable_calculus",
+    "query_preview": "Find $I=\\int_{0}^\\pi \\int_{0}^{4 \\cdot \\sin\\left(\\theta\\right)} \\frac{ 4 }{ \\sqrt{16-r^2} } \\cdot r ...",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 7,
+      "improvement_score": 0,
+      "human_feedback_importance": 10,
+      "overall_improvement": 0,
+      "refinement_success_score": 3.0,
+      "human_feedback_impact": 0.0
+    }
+  },
+  {
+    "entry_id": 13,
+    "uuid": "13af41aa-a2d3-4154-8c2f-cc9fb3ecf5ad",
+    "subject": "multivariable_calculus",
+    "query_preview": "Find the mass of the solid $Q=\\left\\{(x,y,z) | 1 \\le x^2+z^2 \\le 25, y \\le 1-x^2-z^2 \\right\\}$ whose...",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 8,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 1,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 0.7
+    }
+  },
+  {
+    "entry_id": 14,
+    "uuid": "d6fcf747-13d5-42bb-99f4-1c6e55d5cdb5",
+    "subject": "multivariable_calculus",
+    "query_preview": "Consider a rectangular box of width $w$, length $l$, and height $h$ without a lid. If the box is to ...",
+    "summary_metrics": {
+      "initial_quality": 5.5,
+      "refined_quality": 8.5,
+      "improvement_score": 8,
+      "human_feedback_importance": 7,
+      "overall_improvement": 3.0,
+      "refinement_success_score": 8.1,
+      "human_feedback_impact": 2.1
+    }
+  },
+  {
+    "entry_id": 15,
+    "uuid": "7edd29b3-3371-4552-8048-2d9b0fdc6006",
+    "subject": "multivariable_calculus",
+    "query_preview": "The following vectors are given:\n\n$u = 2 \\cdot \\mathbf{i} - 3 \\cdot \\mathbf{j} + 2 \\cdot \\mathbf{k}$...",
+    "summary_metrics": {
+      "initial_quality": 7,
+      "refined_quality": 7,
+      "improvement_score": 2,
+      "human_feedback_importance": 8,
+      "overall_improvement": 0,
+      "refinement_success_score": 4.2,
+      "human_feedback_impact": 0.0
+    }
+  }
+]
