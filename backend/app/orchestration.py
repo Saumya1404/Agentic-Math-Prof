@@ -26,6 +26,8 @@ class OrchestrationState(TypedDict):
     guardrail_result: dict
     professor_response: str
     critic_response: str
+    critic_severity: int
+    critic_scores: dict
     human_feedback: str
     refinement_feedback: str
     tool_usage: List[str]
@@ -101,8 +103,10 @@ async def critic_human_node(state: OrchestrationState) -> OrchestrationState:
     crit = critic.critique(query, prof_resp)
     decision = crit["decision"].strip().lower()
     feedback = crit["feedback"]
+    severity = crit.get("severity", 3)
+    scores = crit.get("scores", {})
 
-    logger.info(f"Critic Decision: {decision}")
+    logger.info(f"Critic Decision: {decision} (severity={severity}, scores={scores})")
 
     human_fb = "approve"
     refine_fb = None
@@ -112,76 +116,89 @@ async def critic_human_node(state: OrchestrationState) -> OrchestrationState:
             logger.error("task_id missing in state during HITL")
             return state
 
-        # === 1. Signal frontend: needs feedback ===
-        if task_id not in tasks:
-            tasks[task_id] = {}
-        tasks[task_id].update({
-            "status": "needs_feedback",
-            "professor_response": prof_resp,
-            "answer": prof_resp,
-            "critic_feedback": feedback,
-            "query": query
-        })
-
-        # Create/prepare event: use it ONLY as the "feedback received" signal
-        # Frontend learns about needs_feedback by polling /status, so don't pre-set the event.
-        if task_id not in hitl_events:
-            hitl_events[task_id] = asyncio.Event()
+        # === Gate HITL on severity: < 3 → auto-refine, >= 3 → pause for human ===
+        if severity < 3:
+            logger.info(f"Low-severity issue (severity={severity}); auto-refining without HITL")
+            human_fb = "auto-refine"
+            refine_fb = f"Critic Feedback: {feedback}\nAuto-refine (severity={severity})"
         else:
-            # Clear any stale signal from a previous iteration before waiting
-            hitl_events[task_id].clear()
-
-        print("\n" + "="*60)
-        print(f"HUMAN IN THE LOOP - FEEDBACK REQUIRED (Iteration {state['iterations']})")
-        print("="*60)
-        print(f"Query: {query}")
-        print(f"Professor:\n{prof_resp}")
-        print(f"Critic:\n{feedback}")
-        print("="*60)
-
-        # === 2. Wait for human feedback via API ===
-        raw_feedback = ""
-        try:
-            await asyncio.wait_for(hitl_events[task_id].wait(), timeout=300)  # 5 min
-        except asyncio.TimeoutError:
-            logger.warning("HITL feedback timeout for task_id: %s", task_id)
-            human_fb = "approve"
-        else:
-            raw_feedback = tasks[task_id].get("human_feedback", "").strip()
-            # Default to approve if empty feedback submitted
-            human_fb = (raw_feedback.lower() or "approve")
-
-        # === 3. Save feedback for DSPy training ===
-        if human_fb != "approve":
-            add_feedback_record({
-                "initial_response": prof_resp,
-                "human_feedback": raw_feedback,
+            # === 1. Signal frontend: needs feedback ===
+            if task_id not in tasks:
+                tasks[task_id] = {}
+            tasks[task_id].update({
+                "status": "needs_feedback",
+                "professor_response": prof_resp,
+                "answer": prof_resp,
                 "critic_feedback": feedback,
-                "query": query,
-                "context": state.get("context", "")
+                "critic_severity": severity,
+                "critic_scores": scores,
+                "query": query
             })
-            logger.info(f"Stored feedback example #{len(feedback_examples)}")
-            
-            # PERFORMANCE FIX: Compile refiner in background to avoid blocking workflow
-            # BootstrapFewShot can take 30-180 seconds; defer to async task
-            asyncio.create_task(_async_compile_refiner())
-            
-            # Persist to disk for durability
-            save_feedback_examples()
-        else:
-            logger.info("Human approved the response.")
 
-        # === 4. Build refinement input (only when there's actionable human feedback) ===
-        if human_fb != "approve":
-            refine_fb = f"Critic Feedback: {feedback}\nHuman Feedback: {raw_feedback}"
-        else:
-            refine_fb = None
+            # Create/prepare event: use it ONLY as the "feedback received" signal
+            # Frontend learns about needs_feedback by polling /status, so don't pre-set the event.
+            if task_id not in hitl_events:
+                hitl_events[task_id] = asyncio.Event()
+            else:
+                # Clear any stale signal from a previous iteration before waiting
+                hitl_events[task_id].clear()
 
-        # Reset event for next loop
-        hitl_events[task_id].clear()
+            print("\n" + "="*60)
+            print(f"HUMAN IN THE LOOP - FEEDBACK REQUIRED (Iteration {state['iterations']})")
+            print("="*60)
+            print(f"Query: {query}")
+            print(f"Professor:\n{prof_resp}")
+            print(f"Critic:\n{feedback}")
+            print(f"Severity: {severity} | Scores: {scores}")
+            print("="*60)
+
+            # === 2. Wait for human feedback via API ===
+            raw_feedback = ""
+            try:
+                await asyncio.wait_for(hitl_events[task_id].wait(), timeout=300)  # 5 min
+            except asyncio.TimeoutError:
+                logger.warning("HITL feedback timeout for task_id: %s", task_id)
+                human_fb = "approve"
+            else:
+                raw_feedback = tasks[task_id].get("human_feedback", "").strip()
+                # Default to approve if empty feedback submitted
+                human_fb = (raw_feedback.lower() or "approve")
+
+            # === 3. Save feedback for DSPy training ===
+            if human_fb != "approve":
+                add_feedback_record({
+                    "initial_response": prof_resp,
+                    "human_feedback": raw_feedback,
+                    "critic_feedback": feedback,
+                    "critic_severity": severity,
+                    "critic_scores": scores,
+                    "query": query,
+                    "context": state.get("context", "")
+                })
+                logger.info(f"Stored feedback example #{len(feedback_examples)}")
+                
+                # PERFORMANCE FIX: Compile refiner in background to avoid blocking workflow
+                # BootstrapFewShot can take 30-180 seconds; defer to async task
+                asyncio.create_task(_async_compile_refiner())
+                
+                # Persist to disk for durability
+                save_feedback_examples()
+            else:
+                logger.info("Human approved the response.")
+
+            # === 4. Build refinement input (only when there's actionable human feedback) ===
+            if human_fb != "approve":
+                refine_fb = f"Critic Feedback: {feedback}\nHuman Feedback: {raw_feedback}"
+            else:
+                refine_fb = None
+
+            # Reset event for next loop
+            hitl_events[task_id].clear()
 
     return {
         "critic_response": feedback,
+        "critic_severity": severity,
+        "critic_scores": scores,
         "human_feedback": human_fb,
         "refinement_feedback": refine_fb
     }
@@ -246,6 +263,8 @@ async def run(query: str, task_id: str) -> dict:
             "guardrail_result": {},
             "professor_response": "",
             "critic_response": "",
+            "critic_severity": 1,
+            "critic_scores": {},
             "human_feedback": "",
             "refinement_feedback": "",
             "tool_usage": [],
