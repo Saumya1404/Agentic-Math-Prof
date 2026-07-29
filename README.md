@@ -7,7 +7,7 @@ An agentic math-tutoring system that solves problems with retrieval-augmented ge
 - Multi-agent pipeline:
   - Guardrail: LLM-based filter (llama-3.1-8b-instant); returns structured `{"status": "allowed"|"blocked"|"error"}`; blocks non-math queries and prompt injection
   - Professor: drafts step-by-step solutions with RAG, optional MCP web search tools, and SymPy symbolic solver
-  - Critic: strict LLM evaluator (llama-3.1-8b-instant); outputs JSON `{"Decision": "Accept"|"Refine", "Feedback": "..."}` with regex fallback; defaults to "Refine" on error
+  - Critic: strict LLM evaluator (llama-3.3-70b-versatile); outputs JSON with Decision, Feedback, Severity (1-5), and multi-axis Scores (Correctness/Completeness/Clarity); severity < 3 triggers auto-refine without HITL pause; defaults to "Refine" on error
   - HITL: asyncio.Event-based pause/resume for human feedback; stored in JSONL + Qdrant vector store
 - DSPy-based optimization: `MathFeedbackRefiner` module compiled via `BootstrapFewShot` teleprompter in a background async task
 - Feedback persistence in JSONL (`Data/feedback/refiner_train.jsonl`) for durability and Qdrant for vector-similarity retrieval of similar past feedback during refinement
@@ -152,13 +152,15 @@ python -m backend.tests.guardrailAgent_tests
 2. Orchestrator (`orchestration.py`, LangGraph `StateGraph`) runs three nodes with conditional routing:
    - **Guardrail** — LLM classifies the query as pass/fail; blocked queries terminate immediately.
    - **Professor** — retrieves top-3 similar examples from two Qdrant KBs (GSM8K, Orca 200k); optionally runs MCP web search tools (search → extract → crawl → analyze_content); uses SymPy `math_solver`; generates a step-by-step solution. Each run uses an isolated `SummarizedMemory`.
-   - **Critic/HITL** — LLM evaluates the solution against strict rules; outputs JSON `{"Decision": "Accept"|"Refine", "Feedback": "..."}`. On "Refine":
-     1. Task status set to `needs_feedback`; frontend polls `/status` and shows the feedback form.
-     2. Orchestrator pauses on `await hitl_events[task_id].wait()` (5-minute timeout).
-     3. Human submits feedback via `POST /feedback`, which sets the event and resumes the workflow.
-     4. Feedback saved to JSONL (`Data/feedback/refiner_train.jsonl`) and Qdrant (`feedback_qdrant.py`).
-     5. A background task triggers DSPy `BootstrapFewShot` compilation of `MathFeedbackRefiner` when enough examples accumulate (min 5).
-     6. Professor refines the solution using the `MathFeedbackRefiner` DSPy module, with context augmented by top-3 similar past feedback from Qdrant vector search.
+   - **Critic/HITL** — LLM evaluates against strict rules; outputs JSON with Decision, Feedback, Severity (1-5 scale), and Scores (Correctness/Completeness/Clarity). Routing depends on severity:
+     - **Severity 1-2** (minor/moderate): auto-refine — skips HITL pause, loops directly back to Professor with the critic feedback.
+     - **Severity 3-5** (notable/major/critical): full HITL flow:
+       1. Task status set to `needs_feedback`; frontend polls `/status` and shows the feedback form.
+       2. Orchestrator pauses on `await hitl_events[task_id].wait()` (5-minute timeout).
+       3. Human submits feedback via `POST /feedback`, which sets the event and resumes the workflow.
+       4. Feedback saved to JSONL (`Data/feedback/refiner_train.jsonl`) and Qdrant (`feedback_qdrant.py`).
+       5. A background task triggers DSPy `BootstrapFewShot` compilation of `MathFeedbackRefiner` when enough examples accumulate (min 5).
+       6. Professor refines the solution using the `MathFeedbackRefiner` DSPy module, with context augmented by top-3 similar past feedback from Qdrant vector search.
    - The refine loop runs **up to 2 refinements** (3 professor runs max; controlled by `iterations <= 2` in `route_critic`).
 3. All tool invocations (KB retrievers, web search tools, math solver, LLM) are tracked in `tool_usage` and returned with the final answer via `GET /status/{task_id}`.
 4. Logging is centralized via `logging_config.yaml` and `core/logger.py`.
