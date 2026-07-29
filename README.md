@@ -5,10 +5,15 @@ An agentic math-tutoring system that solves problems with retrieval-augmented ge
 ## Features
 - Retrieval-Augmented Generation (RAG) over curated math knowledge bases (GSM8K, Orca 200k sample)
 - Multi-agent pipeline:
-  - Guardrail: filters non-math/injection attempts
-  - Professor: drafts step-by-step solutions
-  - Critic: strictly evaluates correctness and completeness
-  - HITL: optional human feedback loop for refinement
+  - Guardrail: LLM-based filter (llama-3.1-8b-instant); returns structured `{"status": "allowed"|"blocked"|"error"}`; blocks non-math queries and prompt injection
+  - Professor: drafts step-by-step solutions with RAG, optional MCP web search tools, and SymPy symbolic solver
+  - Critic: strict LLM evaluator (llama-3.1-8b-instant); outputs JSON `{"Decision": "Accept"|"Refine", "Feedback": "..."}` with regex fallback; defaults to "Refine" on error
+  - HITL: asyncio.Event-based pause/resume for human feedback; stored in JSONL + Qdrant vector store
+- DSPy-based optimization: `MathFeedbackRefiner` module compiled via `BootstrapFewShot` teleprompter in a background async task
+- Feedback persistence in JSONL (`Data/feedback/refiner_train.jsonl`) for durability and Qdrant for vector-similarity retrieval of similar past feedback during refinement
+- SymPy math solver tool for symbolic equation solving
+- Per-call `SummarizedMemory` isolation so conversation turns don't leak across tasks
+- Tool usage tracking (`tool_usage` list returned in `/status` responses)
 - Vector stores: local, file-backed Qdrant collections (no external DB server required) and support for Chroma paths
 - Optional web search augmentation via an MCP server (tools: search/crawl/extract/scrape)
 - React + Vite frontend, FastAPI backend, structured YAML logging
@@ -22,19 +27,31 @@ backend/
     state.py               # Task state, events for HITL
     agents/                # BaseAgent + Professor, Critic, Guardrail, HITL modules
     config/                # logging_config.yaml + settings.py (env-driven)
-    core/logger.py         # Logger bootstrapper
+    core/
+      logger.py            # Logger bootstrapper
+      feedback_qdrant.py   # Qdrant-backed vector store for feedback records
+      registry.py          # Shared ProfessorAgent singleton & lifecycle
     Memory/custom_memory.py
-    tools/RetrieverTool.py # Qdrant-based retriever tool
+    tools/
+      RetrieverTool.py     # Qdrant-based retriever tool
+      MathSolverTool.py    # SymPy expression solver
+  requirements.txt         # Python dependency manifest
   tests/
+    __init__.py
     criticAgent_tests.py
     guardrailAgent_tests.py
 Data/
   knowledge_base/         # Local vector DBs (Qdrant/Chroma) and datasets
+  feedback/               # Human-feedback examples (JSONL) and Qdrant store
+docs/                      # Architecture, evaluation design docs
 frontend/                  # React + Vite app (dev on :5173)
 mcp_servers/
   websearch/               # MCP tool server (Python, stdio); used by ProfessorAgent
+results/                   # Evaluation run outputs (CSV, JSONL, summaries)
 Scripts/
   gsm8k_kb.py, orca200k.py # KB builders (ingest/embed/index)
+  Eval.py, evaluate_responses.py  # Evaluation & scoring pipeline
+  parquet_to_csv_umath.py  # Dataset format converter
 ```
 
 ## Tech stack
@@ -70,8 +87,9 @@ python -m venv venv
 
 # 2) Install backend dependencies
 pip install fastapi uvicorn[standard] pydantic pydantic-settings python-dotenv \
-            langgraph sympy langchain-qdrant langchain-huggingface qdrant-client \
-            sentence-transformers langchain-mcp-adapters dspy-ai
+            langgraph sympy langchain langchain-groq langchain-qdrant \
+            langchain-huggingface qdrant-client sentence-transformers \
+            langchain-mcp-adapters dspy-ai pyyaml
 
 # 3) Launch the API (CORS allows http://localhost:5173)
 uvicorn backend.app.api:app --reload --port 8000
@@ -103,7 +121,7 @@ copy .env.example .env
 
 # (Recommended) Use a dedicated virtualenv
 python -m venv .venv
-./.venv/Scripts/Activate.ps1
+.\.venv/Scripts/Activate.ps1
 
 # Install dependencies defined in pyproject
 pip install -e .
@@ -111,6 +129,8 @@ pip install -e .
 # Run server manually (normally launched by the ProfessorAgent via stdio)
 python main.py
 ```
+
+> **Provider interchangeability:** The MCP server lists `OPENAI_API_KEY` in its `.env.example`, but the main pipeline uses Groq (OpenAI-compatible endpoint). Because both providers share the same chat-completion API format, swapping between them requires only changing the base URL and key — no code changes. The same principle applies to the search/extract backends (Firecrawl, Tavily) used by the server.
 
 ## Data and knowledge bases
 - Prebuilt Qdrant collections live under `./Data/knowledge_base/qdrant_db*`. The retriever uses a local, file-backed Qdrant client (`QdrantClient(path=...)`), so no external DB server is required.
@@ -128,12 +148,19 @@ python -m backend.tests.guardrailAgent_tests
 ```
 
 ## How it works (architecture)
-1. Frontend posts a problem to the backend (`/solve`).
-2. Orchestrator (`orchestration.py`, LangGraph) runs nodes:
-   - Guardrail → filter non-math and injection attempts
-   - Professor → retrieve context (Qdrant) and draft solution; optionally uses MCP web search tools
-   - Critic → evaluate rigorously; on “Refine”, request HITL feedback and loop up to 3 iterations
-3. State is stored in `state.py` (tasks map + asyncio events). Final answer is returned via `/status/{task_id}`.
+1. Frontend posts a problem to `POST /solve`. A `task_id` is created; state is tracked in `state.py` (`tasks` dict + `asyncio.Event` per task).
+2. Orchestrator (`orchestration.py`, LangGraph `StateGraph`) runs three nodes with conditional routing:
+   - **Guardrail** — LLM classifies the query as pass/fail; blocked queries terminate immediately.
+   - **Professor** — retrieves top-3 similar examples from two Qdrant KBs (GSM8K, Orca 200k); optionally runs MCP web search tools (search → extract → crawl → analyze_content); uses SymPy `math_solver`; generates a step-by-step solution. Each run uses an isolated `SummarizedMemory`.
+   - **Critic/HITL** — LLM evaluates the solution against strict rules; outputs JSON `{"Decision": "Accept"|"Refine", "Feedback": "..."}`. On "Refine":
+     1. Task status set to `needs_feedback`; frontend polls `/status` and shows the feedback form.
+     2. Orchestrator pauses on `await hitl_events[task_id].wait()` (5-minute timeout).
+     3. Human submits feedback via `POST /feedback`, which sets the event and resumes the workflow.
+     4. Feedback saved to JSONL (`Data/feedback/refiner_train.jsonl`) and Qdrant (`feedback_qdrant.py`).
+     5. A background task triggers DSPy `BootstrapFewShot` compilation of `MathFeedbackRefiner` when enough examples accumulate (min 5).
+     6. Professor refines the solution using the `MathFeedbackRefiner` DSPy module, with context augmented by top-3 similar past feedback from Qdrant vector search.
+   - The refine loop runs **up to 2 refinements** (3 professor runs max; controlled by `iterations <= 2` in `route_critic`).
+3. All tool invocations (KB retrievers, web search tools, math solver, LLM) are tracked in `tool_usage` and returned with the final answer via `GET /status/{task_id}`.
 4. Logging is centralized via `logging_config.yaml` and `core/logger.py`.
 
 ## Troubleshooting
