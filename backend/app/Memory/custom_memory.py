@@ -66,53 +66,68 @@ class ConversationMemory:
     
 
 class SummarizedMemory(ConversationMemory):
-    def __init__(self,max_messages:int = 10,llm=None,summary_message_role: str = "system"):
+    def __init__(self, max_messages: int = 10, llm=None,
+                 summary_message_role: str = "system",
+                 preserve_first: int = 4, preserve_last: int = 4):
         super().__init__(max_messages=max_messages)
         self.llm = llm
         self.summary_message_role = summary_message_role
+        self.preserve_first = preserve_first
+        self.preserve_last = preserve_last
 
     @property
     def current_summary(self) -> str:
-        if (self.messages and self.messages[0].metadata.get("summary")):
-            return self.messages[0].content
+        for msg in self.messages:
+            if msg.metadata.get("summary"):
+                return msg.content
         return ""
 
     def _enforce_window(self):
-        if len(self.messages) > self.max_messages and self.llm:
-            recent_count = self.max_messages //2
-            if recent_count>len(self.messages):
-                return
-            
-            split_idx = len(self.messages) - recent_count
-            old_messages = self.messages[:split_idx]
-            recent_messages = self.messages[split_idx:]
-            new_summary = self._generate_summary(old_messages)
-            if not new_summary:
-                self.messages = recent_messages
-                return
-            summary_msg = Message(
+        if len(self.messages) <= self.max_messages or not self.llm:
+            return
+
+        existing_summaries = [m.content for m in self.messages if m.metadata.get("summary")]
+        regular = [m for m in self.messages if not m.metadata.get("summary")]
+
+        if len(regular) <= self.preserve_first + self.preserve_last + 1:
+            return
+
+        first = regular[:self.preserve_first]
+        last = regular[-self.preserve_last:]
+        middle = regular[self.preserve_first:-self.preserve_last] if self.preserve_last else regular[self.preserve_first:]
+
+        new_summary = self._generate_summary(middle, existing_summaries)
+        if not new_summary:
+            self.messages = first + last
+            return
+
+        self.messages = [
+            Message(
                 role=self.summary_message_role,
-                content="[Previous conversation_summary]:"+new_summary,
+                content="[Previous conversation_summary]:" + new_summary,
                 metadata={"summary": True}
             )
-            self.messages = [summary_msg] + recent_messages
+        ] + first + last
 
-    def _generate_summary(self, messages=None):
-        """Generate a concise summary for the provided messages (or the full memory if None)."""
+    def _generate_summary(self, messages=None, existing_summaries=None):
         if not self.llm:
             return ""
         msgs = messages if messages is not None else self.messages
         if not msgs:
             return ""
-        conversation_text = "\n".join([
+
+        parts = []
+        if existing_summaries:
+            parts.append("Previous summary of conversation:\n" + "\n".join(existing_summaries))
+        parts.append("Recent exchanges:\n" + "\n".join([
             f"{msg.role}: {msg.content}" for msg in msgs
-        ])
+        ]))
 
         prompt = f"""Summarize the following conversation concisely, focusing on key mathematical concepts, problems discussed, and solutions provided:
 
-                {conversation_text}
+{"\n\n".join(parts)}
 
-                Summary:"""
+Summary:"""
 
         try:
             response = self.llm.invoke([("user", prompt)])
@@ -120,17 +135,15 @@ class SummarizedMemory(ConversationMemory):
         except Exception as e:
             print(f"Error generating summary: {e}")
             return "Unable to generate summary due to an error."
-        
-        
+
     def get_tuple_messages(self) -> List[tuple]:
         return [msg.to_tuple() for msg in self.messages]
-    
-    def get_tuple_messages_without_summary(self) -> List[Message]:
+
+    def get_tuple_messages_without_summary(self) -> List[tuple]:
         return [msg.to_tuple() for msg in self.messages if not msg.metadata.get("summary", False)]
-    
+
     def get_summary(self) -> str:
-        return self.summary 
-    
+        return self.current_summary
+
     def clear(self):
         super().clear()
-        self.summary = ""
