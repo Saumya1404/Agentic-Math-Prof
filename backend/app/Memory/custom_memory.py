@@ -53,7 +53,7 @@ class ConversationMemory:
         return json.dumps([msg.to_dict() for msg in self.messages],indent=2)
     
     def from_json(self,json_str:str):
-        data = json.load(json_str)
+        data = json.loads(json_str)
         self.messages = [
             Message(
                 role=item['role'],
